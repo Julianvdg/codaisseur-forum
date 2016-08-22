@@ -1,0 +1,12 @@
+<% form_for @question do |f| %>
+  <%= f.error_messages %>
+  <% if params[:questions] %><input type="hidden" id="question_id" name="question[id]" value="<%= params[:question] %>" /><% end %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <textarea name="question[content]" cols="80" rows="20"><%= @question.content %></textarea>
+  </p>
+  <p><%= f.submit "Create" %></p>
+<% end %>
