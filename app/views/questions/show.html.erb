@@ -4,19 +4,25 @@
 
 <h3>Answers</h3>
 
-<% @question.answers.each do |answer| %>
+<div class="answers">
+  <% @question.answers.each do |answer| %>
+    <div class="answer">
+      <%= answer.user.email %><br>
+      <%= answer.body %>
+    </div>
+    <br>
+  <% end %>
+</div>
 
 
+<h3>Add an Answer</h3>
 
-<% end %>
-
-<h3>Add an answer:</h3>
 <%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
 
   <div class="field">
-    <%= f.text_area :body, class: 'form-control', placeholder: "Add question details..." %>
+    <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details..." %>
   </div>
   <div class="actions">
-    <%= f.submit "Submit", class: 'btn btn-codaisseur' %>
+    <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
   </div>
 <% end %>
