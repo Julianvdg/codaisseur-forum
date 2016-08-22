@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import 'https://fonts.googleapis.com/css?family=Poppins';
+@import "font-awesome";
 
 body {
     background-color: #eee;
@@ -99,4 +100,14 @@ body {
     color: #c1272d;
     text-decoration: none;
 }
+
+.fa-stack-1x {
+    color:#e3e3e3;
+}
+
+.footer-text ul li:nth-child(-n+4){
+    padding: 0px;
+}
+
+
 
