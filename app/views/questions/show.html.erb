@@ -7,7 +7,16 @@
 <% @question.answers.each do |answer| %>
 
 
-<!-- <%= link_to 'Edit answer', edit_answer_path(@answer) %> |
-<%= link_to 'Delete answer', delete_answer_path(@answer) %> | -->
 
+<% end %>
+
+<h3>Add an answer:</h3>
+<%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
+
+  <div class="field">
+    <%= f.text_area :body, class: 'form-control', placeholder: "Add question details..." %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Submit", class: 'btn btn-codaisseur' %>
+  </div>
 <% end %>
