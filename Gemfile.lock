@@ -209,6 +209,7 @@ DEPENDENCIES
   carrierwave
   cloudinary
   coffee-rails (~> 4.2)
+  concurrent-ruby
   devise
   jbuilder (~> 2.5)
   jquery-rails

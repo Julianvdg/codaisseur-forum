@@ -62,3 +62,5 @@ gem "devise"
 gem "will_paginate"
 
 gem 'rails_12factor', group: :production
+
+gem 'concurrent-ruby'
