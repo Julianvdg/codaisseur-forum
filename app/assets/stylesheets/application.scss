@@ -45,6 +45,31 @@ body {
     margin-top: -10px;
 }
 
+@media only screen and (max-width : 768px) {
+    .border-top {
+        border-top: solid 1px #eee;
+    }
+    .navbar-default .navbar-text {
+    display: none;
+    }
+}
+
+.navbar .navbar-collapse {
+  text-align: center;
+}
+
+.navbar-default .navbar-text {
+    color: #c1272d;
+}
+
+ul.nav a:hover { 
+    color: #c1272d !important; 
+}
+
+.navbar-default .navbar-nav > .active > a {
+    color: #c1272d;
+}
+
 /* Style Devise login & sign-up page */
 
 .devise-wrapper {
