@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Questions.order( created_at: :desc )
+    @question = Questions.order( created_at: :desc )
     authorize! :read, @questions
   end
 
