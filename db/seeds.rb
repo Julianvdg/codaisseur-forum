@@ -15,13 +15,13 @@ questions = Question.create([
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
     user: matthijs
     topic: ruby
-  }
+  },
   {
     name:"How to implement Devise into your rails app?",
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
     user: matthijs
     topic: rails
-  }
+  },
   {
     name:"How to implement Ajax into your rails app?",
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
@@ -31,12 +31,12 @@ questions = Question.create([
 ])
 
 topics = Topic.create([
-  {name: "javascript"}
-  {name: "ruby"}
-  {name: "rails"}
-  {name: "css"}
-  {name: "html"}
-  {name: "ajax"}
-  {name: "jquery"}
+  {name: "javascript"},
+  {name: "ruby"},
+  {name: "rails"},
+  {name: "css"},
+  {name: "html"},
+  {name: "ajax"},
+  {name: "jquery"},
   {name: "sinatra"}
   ])
