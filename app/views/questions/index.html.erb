@@ -18,6 +18,10 @@
     <% @questions.each do |question| %>
       <tr>
         <td><%= question.title %></td>
+        <td><%= question.user.email %></td>
+        <td><%= question.created_at.to_s(:long) %></td>
+        <td><%= question.answers.count %></td>
+        <td><%= question.topic.title %></td>
         <td><%= link_to 'Show', question %></td>
       </tr>
     <% end %>
