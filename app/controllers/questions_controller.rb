@@ -25,7 +25,8 @@ class QuestionsController < ApplicationController
     @user = User.find( params[:user_id] )
     authorize! :read, @user
 
-    @question = Question.where( user: @user ).order ( created_at: :desc )
+    @question = Question.where( user: @user ).order( created_at: :desc )
+    authorize! :read, @user
   end
 
 end
