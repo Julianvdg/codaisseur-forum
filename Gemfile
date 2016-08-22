@@ -56,3 +56,5 @@ gem "cancancan"
 gem "cloudinary"
 
 gem "devise"
+
+gem "will_paginate"
