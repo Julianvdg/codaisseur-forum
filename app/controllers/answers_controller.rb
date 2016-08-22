@@ -8,7 +8,8 @@ class AnswersController < ApplicationController
   end
 
   def create
-    @answer = Answer.new(:body params[:body], :question_id => params[:answer][:question_id])
+    @question = Question.find(params[:question_id])
+    @answer = @question.answer.create(params[:answer])
     @answer.user = current_user
     if @answer.save
       flash[:notice] = "Thank you for your answer."

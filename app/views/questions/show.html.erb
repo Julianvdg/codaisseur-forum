@@ -1,7 +1,13 @@
-<h1><%=@question.title%></h1>
-<p><%=@question.body%></p>
 
-<% @answer.each do |answer| %>
+<h3><%= @question.title %></h3>
+<p><%= @question.body %></p>
+
+<h3>Answers</h3>
+
+<% @question.answers.each do |answer| %>
+
+
+<!-- <%= link_to 'Edit answer', edit_answer_path(@answer) %> |
+<%= link_to 'Delete answer', delete_answer_path(@answer) %> | -->
+
 <% end %>
-
-<% render 'answers/_form' %>
