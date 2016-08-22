@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
 
 
-  get 'questions/index'
-  get 'questions/show'
-  get 'questions/new'
-  get 'questions/update'
+resources :questions
 
 
 
