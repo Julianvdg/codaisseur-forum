@@ -9,8 +9,9 @@ class AnswersController < ApplicationController
 
   def create
     @question = Question.find(params[:question_id])
-    @answer = @question.answer.create(params[:answer])
     @answer.user = current_user
+    @answer = @question.answer.create(params[:answer])
+    redirect_to question_path(@question)
     if @answer.save
       flash[:notice] = "Thank you for your answer."
       redirect_to "/questions/#{@answer.question_id}"
