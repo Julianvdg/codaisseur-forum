@@ -1,24 +1,38 @@
-# README
+# Codaisseur Forum 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The project consists on a forum application that will be used by current students and alumni from Codaisseur. It will provide the community a better tool for getting questions answered, and making it easier to connect with other people going through the same journey.
 
-Things you may want to cover:
+### Models
+---
 
-* Ruby version
+#### Model / Question
+- Title
+- Body
+- [Bonus] images_url
+#### Model / Answer
+- Body
+#### Model / Topic
+- Title
 
-* System dependencies
+### Model Associations
+---
 
-* Configuration
+#### Users
+- has_many :questions
+- has_many :answers
 
-* Database creation
+#### Questions
+- belongs_to :user
+- has_many :answers
+- has_one :topic
 
-* Database initialization
+#### Answers
+- belongs_to :user
+- belongs_to :question
 
-* How to run the test suite
+#### Topics
+- has_many :questions
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Votes
+- [TODO]
 
-* Deployment instructions
-
-* ...
