@@ -9,8 +9,10 @@ The project consists on a forum application that will be used by current student
 - Title
 - Body
 - [Bonus] images_url
+
 #### Model / Answer
 - Body
+
 #### Model / Topic
 - Title
 
