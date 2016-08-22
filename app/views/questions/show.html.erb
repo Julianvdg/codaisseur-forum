@@ -2,7 +2,11 @@
 <h3><%= @question.title %></h3>
 <p><%= @question.body %></p>
 
-<h3>Answers</h3>
+
+<h3>
+  <%= pluralize(@question.answers.length, 'Answer') %>
+</h3>
+
 
 <div class="answers">
   <% @question.answers.each do |answer| %>
@@ -13,6 +17,7 @@
     <br>
   <% end %>
 </div>
+
 
 
 <h3>Add an Answer</h3>

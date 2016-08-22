@@ -5,7 +5,6 @@ class AnswersController < ApplicationController
   end
 
   def new
-
   end
 
   def create
@@ -22,5 +21,6 @@ class AnswersController < ApplicationController
 
   def update
   end
+
 
 end
