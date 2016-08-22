@@ -2,6 +2,6 @@ class Question < ApplicationRecord
 
   belongs_to :user
   has_many :answers
-  has_one :topic
-  
+  belongs_to :topic
+
 end

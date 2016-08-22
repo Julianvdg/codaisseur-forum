@@ -1,4 +1,18 @@
+Question.delete_all
 User.delete_all
+Topic.delete_all
+
+
+javascript= Topic.create( title: 'Javascript' )
+ruby      = Topic.create( title: 'Ruby' )
+rails     = Topic.create( title: 'Rails' )
+cases     = Topic.create( title: 'Cases' )
+html      = Topic.create( title: 'Html' )
+ajax      = Topic.create( title: 'Ajax' )
+jquery    = Topic.create( title: 'JQuery' )
+sinatra   = Topic.create( title: 'Sinatra' )
+
+
 
 matthijs = User.create( email: 'matthijs@test.com', password: 'abcd1234', role: 'student' )
 ruben = User.create( email: 'ruben@test.com', password: 'abcd1234', role: 'student' )
@@ -9,35 +23,25 @@ miriam = User.create( email: 'miriam@test.com', password: 'abcd1234', role: 'tea
 admin = User.create( email: 'admin@test.com', password: 'abcd1234', role: 'admin' )
 
 
-questions = Question.create([
+Question.create([
+
   {
-    name:"How to implement Devise into your ruby app?",
-    description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
+    title:"How to implement Devise into your ruby app?",
+    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
     user: matthijs,
     topic: ruby
   },
   {
-    name:"How to implement Devise into your rails app?",
-    description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
+    title:"How to implement Devise into your rails app?",
+    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
     user: matthijs,
     topic: rails
   },
   {
-    name:"How to implement Ajax into your rails app?",
-    description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
+    title:"How to implement Ajax into your rails app?",
+    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
     user: matthijs,
     topic: javascript
   }
+
 ])
-
-Topic.delete_all
-
-
-javascript= Topic.create( name: 'Javascript' )
-ruby      = Topic.create( name: 'Ruby' )
-rails     = Topic.create( name: 'Rails' )
-cases     = Topic.create( name: 'Cases' )
-html      = Topic.create( name: 'Html' )
-ajax      = Topic.create( name: 'Ajax' )
-jquery    = Topic.create( name: 'JQuery' )
-sinatra   = Topic.create( name: 'Sinatra' )
