@@ -10,24 +10,21 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="#">Reader</a></li>
-        <li><a href="#">Forum</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Support</a></li>
+        <li><a href="https://read.codaisseur.com/">Reader</a></li>
+        <li class="active"><a href="#">Forum</a></li>
+        <li><a href="https://www.codaisseur.com/blog">Blog</a></li>
+        <li><a href="https://www.codaisseur.com/contact">Support</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        
         <% if !user_signed_in? %>
-            <li><%= link_to "Log In", new_user_session_path %></li>
-            <li><%= link_to "Sign up", new_user_registration_path %></li>
+            <li class="border-top"><%= link_to "Log In", new_user_session_path %></li>
         <% else %>
         <li>
          <span class="navbar-text">Welcome, <%= current_user.email %></span>
          </li>
-        <li><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
+        <li class="border-top"><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
         <% end %>
-
-         
 
       </ul>
     </div>
