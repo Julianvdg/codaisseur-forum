@@ -13,19 +13,19 @@ questions = Question.create([
   {
     name:"How to implement Devise into your ruby app?",
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs
+    user: matthijs,
     topic: ruby
   },
   {
     name:"How to implement Devise into your rails app?",
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs
+    user: matthijs,
     topic: rails
   },
   {
     name:"How to implement Ajax into your rails app?",
     description: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs
+    user: matthijs,
     topic: javascript
   }
 ])
