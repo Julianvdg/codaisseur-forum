@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
 
   def index
-    @questions = Question.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 10)
+    @questions = Question.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
     authorize! :read, @questions
   end
 
