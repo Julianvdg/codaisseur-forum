@@ -198,4 +198,10 @@ ul.nav a:hover {
 .avatar-teacher {
   border: 4px #c1272d solid;
 }
+.profile-name {
+  vertical-align: middle;
 
+  div {
+    display: inline-block;
+  }
+}

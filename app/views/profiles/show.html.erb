@@ -2,13 +2,17 @@
   <table class="table">
     <thead>
       <tr>
-        <td colspan="2">
+        <td colspan="2" class="profile-name">
           <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
             <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
           <% else %>
             <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
           <% end %>
-          <span class="h3"><%= @profile.full_name %></div>
+          <div>
+            <span class="h3"><%= @profile.full_name %></span><br>
+            <%= @profile.user.role.capitalize %>
+            <%= 'in class ' + @profile.student_class.to_s if !@profile.student_class.nil? %>
+          </div>
         </td>
       </tr>
     </thead>
