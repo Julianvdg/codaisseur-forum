@@ -10,12 +10,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    question_params = params.require( :question ).permit( :content )
-
-     @question = Question.new( content: question_params[:content] )
+     @question = Question.new(params.require(:question).permit(:title, :body))
      @question.user = current_user
      authorize! :create, @question
-  end
+     @question.save
+     redirect_to @question
+   end
 
   def update
     question_params = params.require( :question ).permit( :content )
