@@ -66,5 +66,3 @@ gem 'rails_12factor', group: :production
 gem 'concurrent-ruby'
 
 gem "font-awesome-rails"
-
-gem 'cloudinary'
