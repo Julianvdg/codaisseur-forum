@@ -24,7 +24,6 @@
 
 <%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
   <%= f.hidden_field :question_id %>
-  <%= f.hidden_field :user_id, :value => current_user.id  %>
   <div class="field">
     <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details..." %>
   </div>
