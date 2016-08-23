@@ -2,6 +2,12 @@ class QuestionsController < ApplicationController
 
   def index
     @questions = Question.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
+    @questions= Question.all
+    if params[:search]
+      @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
+    else
+      @questions = Question.all.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
+    end
     authorize! :read, @questions
   end
 
