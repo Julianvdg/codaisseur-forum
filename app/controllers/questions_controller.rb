@@ -1,12 +1,13 @@
 class QuestionsController < ApplicationController
+helper_method :sort_column, :sort_direction
+
 
   def index
-    @questions = Question.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
-    @questions= Question.all
+
     if params[:search]
-      @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
+      @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 5)
     else
-      @questions = Question.all.order(created_at: :desc).paginate(:page =>params[:page], :per_page => 2)
+      @questions = Question.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
     end
     authorize! :read, @questions
   end
@@ -39,5 +40,19 @@ class QuestionsController < ApplicationController
     @question = Question.where( user: @user ).order( created_at: :desc )
     authorize! :read, @user
   end
+
+  private
+  def sortable_columns
+    ["topic_id", "created_at", "title"]
+  end
+
+  def sort_column
+    sortable_columns.include?(params[:column]) ? params[:column] : "title"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 
 end
