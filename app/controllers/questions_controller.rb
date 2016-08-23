@@ -10,11 +10,12 @@ class QuestionsController < ApplicationController
   end
 
   def create
-     @question = Question.new(params.require(:question).permit(:title, :body))
+     @question = Question.new(params.require(:question).permit(:title, :body, :topic_id))
      @question.user = current_user
      authorize! :create, @question
      @question.save
      redirect_to @question
+
    end
 
   def update
