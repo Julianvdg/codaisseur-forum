@@ -4,19 +4,30 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 
 <div class="user-controls controls-wrapper">
     <div class="row">
-    <div class="col-md-4">
-          <input type="text" class="form-control search-bar" placeholder="Search for...">
-    </div><!-- /.col-lg-6 -->
-    
-    <div class="col-md-2">test</div>
-    <div class="col-md-6">Test</div>
+    <div class="col-sm-4 col-xs-8">
+        <div class="input-group">
+            <input type="text" class="form-control search-bar" placeholder="Enter email" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-codaisseur" type="submit">Add User</button>
+            </div>
+        </div>
     </div>
-    <div class="row">
+    
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button class="btn btn-codaisseur" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <input type="text" class="form-control search-bar" placeholder="Search" name="srch-term" id="srch-term">
+        </div>
+    </div>
+    </div>
+    <div class="row sorting-links">
         <div class="col-md-4">
             <ul class="list-inline">
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
+                <li class="active"><a href="#">New</a></li>
+                <li><a href="#">Name</a></li>
+                <li><a href="#">Email</a></li>
             </ul>
         </div>
     </div>

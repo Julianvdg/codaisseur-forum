@@ -144,7 +144,7 @@ ul.nav a:hover {
 
 .controls-wrapper {
     background-color: #E4E4E4;
-    padding: 60px 50px;
+    padding: 40px 50px 0px 50px;
     border-radius: 5px 5px 0px 0px;
     margin-top: 50px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.40);
@@ -166,4 +166,22 @@ ul.nav a:hover {
     border-radius: 3px !important;
 }
 
+.sorting-links {
+    margin-top: 30px;
+    font-weight: 700;
+}
+
+.sorting-links ul li a {
+    color: #333;   
+    cursor: pointer;
+}
+
+.sorting-links ul li a:hover {
+    color: #c1272d;
+    text-decoration: none;
+}
+
+.sorting-links ul li.active a{
+    color: #c1272d;
+}
 
