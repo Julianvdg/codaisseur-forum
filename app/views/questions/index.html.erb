@@ -6,21 +6,61 @@
 
 <h1>Questions</h1>
 
+<br>
+<br>
+<%= form_tag(questions_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @questions.present? %>
+  <% render "form" %>
+<% else %>
+  <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+<br>
+<br>
+
 <table>
 
-  <tbody>
     <% @questions.each do |question| %>
-      <tr>
-        <td><%= question.title %></td>
-        <td><%= question.user.email %></td>
-        <td><%= question.created_at.to_s(:long) %></td>
-        <td><%= question.answers.count %></td>
-        <td><%= question.topic.title %></td>
-        <td><%= link_to 'Show', question %></td>
-      </tr>
+      <div class="row">
+            <tr>
+              <th width="40%"><%= link_to question.title, question %></th>
+              <th width="10%">Answers</th>
+            </tr>
+      </div>
+      <div class="row">
+            <tr>
+              <th width="40%"><%= question.created_at.to_s(:long) %></th>
+              <th width="10%"><%= question.answers.count %></th>
+            </tr>
+      </div>
+      <div class="row">
+            <tr>
+              <th width="10%"><%= question.topic.title %></th>
+            </tr>
+      </div>
     <% end %>
   </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <br>
 

@@ -1,7 +1,4 @@
 class ProfilesController < ApplicationController
-    def index
-        @users = User.all
-    end
     
     helper_method :sort_column, :sort_direction
 
@@ -21,4 +18,8 @@ class ProfilesController < ApplicationController
     def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
+
+  def show
+    @profile = Profile.find(params[:id])
+  end
 end

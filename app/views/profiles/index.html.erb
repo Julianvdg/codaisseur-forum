@@ -33,20 +33,35 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     </div>
 </div>
 <div class="table-wrapper">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @users.each do |user| %>
-            <tr>
-                <td><%= user.email %></td>
-                <td><%= user.role %></td>
-            </tr>
+  <table class="table table-hover table-users">
+    <thead>
+      <tr>
+        <th>Avatar</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% if !user.profile.nil? %>
+            <% if user.is_teacher? || user.is_admin? %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %></td>
+            <% else %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %></td>
             <% end %>
-        </tbody>
-    </table>
+            <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
