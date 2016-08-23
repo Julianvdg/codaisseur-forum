@@ -5,8 +5,7 @@ class Question < ApplicationRecord
   belongs_to :topic
 
   def self.search(search)
-    where("title ILIKE ?", "%#{search}%")
-    where("body ILIKE ?", "%#{search}%")
+    where("title ILIKE ? ", "%#{search}%")
   end
 
 end

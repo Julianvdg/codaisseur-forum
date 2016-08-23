@@ -13,6 +13,12 @@
 <%= submit_tag "Search" %>
 <% end %>
 
+<% if @questions.present? %>
+  <% render "form" %>
+<% else %>
+  <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
 <br>
 <br>
 
