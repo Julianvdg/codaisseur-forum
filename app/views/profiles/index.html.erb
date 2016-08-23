@@ -25,9 +25,9 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     <div class="row sorting-links">
         <div class="col-md-4">
             <ul class="list-inline">
-                <li class="active"><a href="#">New</a></li>
-                <li><a href="#">Name</a></li>
-                <li><a href="#">Email</a></li>
+                <li class="active"><%= sort_link "created_at", "New" %></li>
+                <li><%= sort_link "email" %></li>
+                <li><%= sort_link "role" %></li>
             </ul>
         </div>
     </div>
