@@ -1,2 +1,34 @@
-<h1>Questions#show</h1>
-<p>Find me in app/views/questions/show.html.erb</p>
+
+<h3><%= @question.title %></h3>
+<p><%= @question.body %></p>
+
+
+<h3>
+  <%= pluralize(@question.answers.length, 'Answer') %>
+</h3>
+
+
+<div class="answers">
+  <% @question.answers.each do |answer| %>
+    <div class="answer">
+      <%= answer.user.email %><br>
+      <%= answer.body %>
+    </div>
+    <br>
+  <% end %>
+</div>
+
+
+
+<h3>Add an Answer</h3>
+
+<%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
+  <%= f.hidden_field :question_id %>
+  <%= f.hidden_field :user_id, :value => current_user.id  %>
+  <div class="field">
+    <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details..." %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
+  </div>
+<% end %>

@@ -1,3 +1,4 @@
+Answer.delete_all
 Question.delete_all
 User.delete_all
 Topic.delete_all
@@ -23,25 +24,24 @@ miriam = User.create( email: 'miriam@test.com', password: 'abcd1234', role: 'tea
 admin = User.create( email: 'admin@test.com', password: 'abcd1234', role: 'admin' )
 
 
-Question.create([
+question1 = Question.create( title: "How to implement Devise into your ruby app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: ruby)
+question2 = Question.create( title: "How to implement Devise into your rails app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: rails )
+question3 = Question.create( title: "How to implement Ajax into your rails app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: javascript )
 
+Answer.create([
   {
-    title:"How to implement Devise into your ruby app?",
-    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs,
-    topic: ruby
+    body: "Humblebrag helvetica etsy leggings. IPhone butcher authentic XOXO, actually cred affogato knausgaard mlkshk. Knausgaard shoreditch waistcoat tacos irony salvia. Portland shoreditch stumptown aesthetic raw denim craft beer gluten-free, next level pickled. Drinking vinegar heirloom pickled humblebrag shabby chic.", user: ruben, question: question1
   },
   {
-    title:"How to implement Devise into your rails app?",
-    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs,
-    topic: rails
+    body: "Narwhal kombucha pug disrupt VHS whatever, pickled sustainable kale chips small batch schlitz. Godard cardigan venmo freegan VHS intelligentsia heirloom chia shabby chic, knausgaard meggings ethical cronut schlitz.", user: nienke, question: question1
   },
   {
-    title:"How to implement Ajax into your rails app?",
-    body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google",
-    user: matthijs,
-    topic: javascript
+    body: "Put a bird on it tote bag mumblecore, lomo waistcoat craft beer pork belly shabby chic. Tacos green juice microdosing whatever, migas squid flannel asymmetrical wayfarers dreamcatcher stumptown twee.", user: julianh, question: question2
+  },
+  {
+    body: "Selvage flannel hashtag, actually tilde cold-pressed truffaut 90's.", user: juliang, question: question3
+  },
+  {
+    body: "Occupy ugh gochujang, swag hammock gentrify cardigan jean shorts meggings food truck synth biodiesel pork belly DIY four dollar toast.", user: miriam, question: question3
   }
-
-])
+  ])
