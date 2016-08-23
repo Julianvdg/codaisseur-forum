@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def is_teacher?
     role == 'teacher'
   end
+
+  def is_teacher_or_admin?
+    role == 'teacher' || role == 'admin'
+  end
 end

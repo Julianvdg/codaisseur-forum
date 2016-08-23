@@ -68,8 +68,8 @@ body {
     color: #c1272d;
 }
 
-ul.nav a:hover { 
-    color: #c1272d !important; 
+ul.nav a:hover {
+    color: #c1272d !important;
 }
 
 .navbar-default .navbar-nav > .active > a {
@@ -90,7 +90,7 @@ ul.nav a:hover {
 
 .btn-codaisseur {
     color: #fff;
-    background-color: #c1272d;    
+    background-color: #c1272d;
 }
 
 .btn-codaisseur:hover {
@@ -111,7 +111,7 @@ ul.nav a:hover {
     bottom: 0;
     width: 100%;
     height: 60px;
-    
+
 }
 
 .footer-wrapper {
@@ -159,11 +159,18 @@ ul.nav a:hover {
     -moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.40);
     box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.40);
 }
-
+.table-users td {
+  vertical-align: middle !important;
+}
 .search-bar {
     background-color: #fff;
     border: none;
     border-radius: 3px !important;
 }
-
-
+.avatar {
+  width: 50px;
+  border-radius: 50%;
+}
+.avatar-teacher {
+  border: 4px red solid;
+}

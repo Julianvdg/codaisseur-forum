@@ -3,39 +3,54 @@
 mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 
 <div class="user-controls controls-wrapper">
-    <div class="row">
+  <div class="row">
+  <div class="col-md-4">
+    <input type="text" class="form-control search-bar" placeholder="Search for...">
+  </div><!-- /.col-lg-6 -->
+
+  <div class="col-md-2">test</div>
+  <div class="col-md-6">Test</div>
+  </div>
+  <div class="row">
     <div class="col-md-4">
-          <input type="text" class="form-control search-bar" placeholder="Search for...">
-    </div><!-- /.col-lg-6 -->
-    
-    <div class="col-md-2">test</div>
-    <div class="col-md-6">Test</div>
+      <ul class="list-inline">
+        <li>Test</li>
+        <li>Test</li>
+        <li>Test</li>
+      </ul>
     </div>
-    <div class="row">
-        <div class="col-md-4">
-            <ul class="list-inline">
-                <li>Test</li>
-                <li>Test</li>
-                <li>Test</li>
-            </ul>
-        </div>
-    </div>
+  </div>
 </div>
 <div class="table-wrapper">
-    <table class="table table-hover">
-        <thead>
-            <tr>
-                <th>Email</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @users.each do |user| %>
-            <tr>
-                <td><%= user.email %></td>
-                <td><%= user.role %></td>
-            </tr>
+  <table class="table table-hover table-users">
+    <thead>
+      <tr>
+        <th>Avatar</th>
+        <th>Email</th>
+        <th>Name</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% if !user.profile.nil? %>
+            <% if user.is_teacher? || user.is_admin? %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %></td>
+            <% else %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %></td>
             <% end %>
-        </tbody>
-    </table>
+            <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
