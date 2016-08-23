@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   end
 
   def sort_column
-    sortable_columns.include?(params[:column]) ? params[:column] : "email"
+    sortable_columns.include?(params[:column]) ? params[:column] : "created_at"
   end
 
   def sort_direction
