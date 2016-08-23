@@ -34,14 +34,6 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 </div>
 <div class="table-wrapper">
   <table class="table table-hover table-users">
-    <thead>
-      <tr>
-        <th>Avatar</th>
-        <th>Email</th>
-        <th>Name</th>
-        <th>Role</th>
-      </tr>
-    </thead>
     <tbody>
       <% @users.each do |user| %>
         <tr>
@@ -54,11 +46,15 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
+            <td class="text-right"><button class="btn btn-default" type="submit">Delete User</button>
+            <button class="btn btn-codaisseur" type="submit">Edit User</button></td>
           <% else %>
             <td></td>
             <td></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
+            <td class="text-right"><button class="btn btn-default" type="submit">Delete User</button>
+            <button class="btn btn-codaisseur" type="submit">Edit User</button></td>
           <% end %>
         </tr>
       <% end %>
