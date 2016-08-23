@@ -1,4 +1,37 @@
-
-<h3><%= @profile.full_name %></h3>
-
-<%= link_to 'Back', profiles_path %>
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <td colspan="2">
+          <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
+            <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+          <% else %>
+            <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
+          <% end %>
+          <span class="h3"><%= @profile.full_name %></div>
+        </td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      </tr>
+      <tr>
+        <th>Bio</th>
+        <td><%= @profile.bio %></td>
+      </tr>
+      <tr>
+        <th>Github</th>
+        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github %></td>
+      </tr>
+      <tr>
+        <th>Twitter</th>
+        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter %></td>
+      </tr>
+      <tr>
+        <th>Website</th>
+        <td><%= link_to @profile.website, @profile.website %></td>
+      </tr>
+    </tbody>
+  </table>
+  <%= link_to 'Back', profiles_path %>
+</div>

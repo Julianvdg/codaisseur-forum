@@ -174,7 +174,7 @@ ul.nav a:hover {
 }
 
 .sorting-links ul li a {
-    color: #333;   
+    color: #333;
     cursor: pointer;
 }
 
@@ -189,6 +189,10 @@ ul.nav a:hover {
 
 .avatar {
   width: 50px;
+  border-radius: 50%;
+}
+.avatar-big {
+  width: 100px;
   border-radius: 50%;
 }
 .avatar-teacher {
