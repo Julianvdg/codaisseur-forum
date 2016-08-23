@@ -26,7 +26,7 @@ Profile.create([
   {
     first_name: 'Matthijs',
     last_name: 'van den Berg',
-    avatar: open('https://avatars0.githubusercontent.com/u/16759160?v=3&s=460'),
+    avatar: 'https://avatars0.githubusercontent.com/u/16759160?v=3&s=460',
     bio: 'Call park out she wife face mean. Invitation excellence imprudence understood it continuing to.',
     github: 'Ecthelion3',
     twitter: 'ecthelion3',
@@ -37,7 +37,7 @@ Profile.create([
   {
     first_name: 'Ruben',
     last_name: 'Sloote',
-    avatar: open('https://avatars3.githubusercontent.com/u/20690371?v=3&s=460'),
+    avatar: 'https://avatars3.githubusercontent.com/u/20690371?v=3&s=460',
     bio: 'Ye show done an into. Fifteen winding related may hearted colonel are way studied.',
     github: 'RubenSloote',
     twitter: '',
@@ -48,7 +48,7 @@ Profile.create([
   {
     first_name: 'Nienke',
     last_name: 'Bos',
-    avatar: open('https://avatars2.githubusercontent.com/u/20145582?v=3&s=460'),
+    avatar: 'https://avatars2.githubusercontent.com/u/20145582?v=3&s=460',
     bio: 'County suffer twenty or marked no moment in he. Meet shew or said like he.',
     github: 'nienkebos',
     twitter: 'miriamtocino',
@@ -59,7 +59,7 @@ Profile.create([
   {
     first_name: 'Julian',
     last_name: 'van der Giesen',
-    avatar: open('https://avatars0.githubusercontent.com/u/6368911?v=3&s=460'),
+    avatar: 'https://avatars0.githubusercontent.com/u/6368911?v=3&s=460',
     bio: 'Valley silent cannot things so remain oh to elinor. Far merits season better tended any age hunted.',
     github: 'Julianvdg',
     twitter: 'Julianvdg',
@@ -70,7 +70,7 @@ Profile.create([
   {
     first_name: 'Julian',
     last_name: 'Hoogendoorn',
-    avatar: open('https://avatars2.githubusercontent.com/u/20745645?v=3&s=460'),
+    avatar: 'https://avatars2.githubusercontent.com/u/20745645?v=3&s=460',
     bio: 'Lose john poor same it case do year we. Full how way even the sigh.',
     github: 'ijscoman1337',
     twitter: '',
@@ -81,7 +81,7 @@ Profile.create([
   {
     first_name: 'Miriam',
     last_name: 'Tocino',
-    avatar: open('https://avatars1.githubusercontent.com/u/6079870?v=3&s=460'),
+    avatar: 'http://www.miriamtocino.com/images/me.jpg',
     bio: 'Extremely nor furniture fat questions now provision incommode preserved. Our side fail find like now.',
     github: 'miriamtocino',
     twitter: '',
@@ -91,7 +91,7 @@ Profile.create([
   {
     first_name: 'Wouter',
     last_name: 'de Vos',
-    avatar: open('https://avatars0.githubusercontent.com/u/309331?v=3&s=460'),
+    avatar: 'https://avatars0.githubusercontent.com/u/309331?v=3&s=460',
     bio: 'Discovered travelling for insensible partiality unpleasing impossible she.',
     github: 'foxycoder',
     twitter: 'wrdevos',

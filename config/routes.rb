@@ -6,6 +6,8 @@ Rails.application.routes.draw do
         resources :answers
     end
 
+    resources :profiles
+
     get "questions/:id" => "questions#show"
 
     get "user-management" => "profiles#index"
