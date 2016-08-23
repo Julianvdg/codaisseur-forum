@@ -31,7 +31,7 @@ Profile.create([
     github: 'Ecthelion3',
     twitter: 'ecthelion3',
     website: '',
-    class: 4,
+    student_class: 4,
     user: matthijs
   },
   {
@@ -42,7 +42,7 @@ Profile.create([
     github: 'RubenSloote',
     twitter: '',
     website: '',
-    class: 4,
+    student_class: 4,
     user: ruben
   },
   {
@@ -53,7 +53,7 @@ Profile.create([
     github: 'nienkebos',
     twitter: 'miriamtocino',
     website: '',
-    class: 4,
+    student_class: 4,
     user: nienke
   },
   {
@@ -64,7 +64,7 @@ Profile.create([
     github: 'Julianvdg',
     twitter: 'Julianvdg',
     website: 'http://webhippy.com/',
-    class: 4,
+    student_class: 4,
     user: juliang
   },
   {
@@ -75,7 +75,7 @@ Profile.create([
     github: 'ijscoman1337',
     twitter: '',
     website: '',
-    class: ,
+    student_class: 4,
     user: julianh
   },
   {
