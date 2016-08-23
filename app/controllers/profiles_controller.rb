@@ -9,6 +9,15 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
   end
+    
+    
+        
+def approve_user
+    user = User.find(params[:id])
+    user.approved = true
+    user.save
+  redirect_to user_management_path
+end
 
   private
 
@@ -23,4 +32,6 @@ class ProfilesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+    
+
 end
