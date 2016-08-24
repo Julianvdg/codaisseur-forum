@@ -10,6 +10,12 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
   end
 
+  def new
+    if !current_user.profile.nil?
+      redirect_to root_path
+    end
+  end
+
   private
 
   def sortable_columns

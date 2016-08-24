@@ -92,10 +92,17 @@ ul.nav a:hover {
     color: #fff;
     background-color: #c1272d;
 }
-
 .btn-codaisseur:hover {
     background-color: #CE2A30;
     color: #fff;
+}
+.btn-cancel {
+    color: #fff;
+    background-color: #aaa;
+}
+.btn-cancel:hover {
+    color: #fff;
+    background-color: #bbb;
 }
 
 .field {
@@ -204,4 +211,7 @@ ul.nav a:hover {
   div {
     display: inline-block;
   }
+}
+.btn-submit-wrapper {
+  text-align: right;
 }
