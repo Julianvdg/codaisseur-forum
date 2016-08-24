@@ -7,18 +7,22 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 <div class="user-controls controls-wrapper">
     <div class="row">
     <div class="col-sm-4 col-xs-8">
-        <div class="input-group">
-          <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
-          <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
-          <%= submit_tag "Search" %>
-          <% end %>
-
-          <% if @questions.present? %>
-            <% render "form" %>
-          <% else %>
-            <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
-          <% end %>
+      <div class="btn btn-default">
+      <%= link_to 'New Question', new_question_path %>
+      </div>
         </div>
+        <div class="col-sm-8 col-xs-8">
+          <div class="input-group pull-right">
+            <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
+            <%= submit_tag "Search" %>
+            <% end %>
+            <% if @questions.present? %>
+              <% render "form" %>
+            <% else %>
+              <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
+            <% end %>
+          </div>
     </div>
     </div>
     <div class="row sorting-links">
