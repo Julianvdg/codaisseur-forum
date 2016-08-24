@@ -1,71 +1,55 @@
-<h1>Questions#index</h1>
-<p>Find me in app/views/questions/index.html.erb</p>
-
-
-<p id="notice"><%= notice %></p>
 
 <h1>Questions</h1>
+<p>Minim tousled iPhone master cleanse normcore bespoke. Aute magna truffaut exercitation
+mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
+<p id="notice"><%= notice %></p>
 
-<br>
-<br>
-<%= form_tag(questions_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
-<%= submit_tag "Search" %>
-<% end %>
+<div class="user-controls controls-wrapper">
+    <div class="row">
+    <div class="col-sm-4 col-xs-8">
+        <div class="input-group">
+          <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
+          <%= submit_tag "Search" %>
+          <% end %>
 
-<% if @questions.present? %>
-  <% render "form" %>
-<% else %>
-  <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
-<% end %>
+          <% if @questions.present? %>
+            <% render "form" %>
+          <% else %>
+            <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
+          <% end %>
+        </div>
+    </div>
+    </div>
+    <div class="row sorting-links">
+        <div class="col-md-4">
+            <ul class="list-inline">
+                <li class="active"><%= sort_link "title" %></li>
+                <li><%= sort_link "topic_id" %></li>
+                <li><%= sort_link "created_at" %></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-<br>
-<br>
-
-<tr>
-      <th><%= sort_link "title" %></th>
-      <th><%= sort_link "topic_id" %></th>
-      <th><%= sort_link "created_at" %></th>
-    </tr>
-
-<table>
-
+<div class="table-wrapper">
+  <table class="table table-hover table-users">
+    <tbody>
     <% @questions.each do |question| %>
-      <div class="row">
             <tr>
-              <th width="40%"><%= link_to question.title, question %></th>
-              <th width="10%">Answers</th>
-            </tr>
-      </div>
-      <div class="row">
-            <tr>
-              <th width="40%"> created <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.profile.full_name %></th>
-              <th width="10%"><%= question.answers.count %></th>
-            </tr>
-      </div>
-      <div class="row">
-            <tr>
-              <th width="10%"><%= question.topic.title %></th>
-            </tr>
-      </div>
-    <% end %>
-  </tbody>
-</table>
+            <% if question.user.is_teacher? || question.user.is_admin? %>
+              <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
+            <% else %>
+              <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
+            <% end %>
+            <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p></p></td>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <td><h6 class="text-right">Answers</h6><p class= "text-right"><%= question.answers.count %></p></td>
+              </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
 
 <br>
