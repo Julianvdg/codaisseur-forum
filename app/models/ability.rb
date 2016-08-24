@@ -10,13 +10,12 @@ class Ability
         elsif user.is_teacher?
             can :manage, Question, user: user
             can :manage, Answer, user: user
+			can [:create, :edit], Profile, user: user
         elsif user.is_student?
             can :manage, Question, user: user
             can :manage, Answer, user: user
+			can [:create, :edit], Profile, user: user
         end
 
     end
 end
-
-
-
