@@ -15,6 +15,10 @@
         <p class="question-time-ago"><b><%= time_ago_in_words(@question.created_at).capitalize %> ago</b> by <b><%= @question.user.profile.full_name %></b></p>
         <p><%= markdown(@question.body) %></p>
       </td>
+      <td>
+        <td class="text-right"><button class="btn btn-default" type="submit">Delete question</button>
+        <button class="btn btn-codaisseur" type="submit">Edit question</button></td>
+      </td>
     </tbody>
   </table>
 
@@ -33,6 +37,10 @@
             <p class="answer-time-ago"> <b><%= answer.user.profile.full_name%> </b><%= time_ago_in_words(answer.created_at) %> ago</p>
 
             <p><%= markdown(answer.body) %></p>
+          </td>
+          <td>
+            <td class="text-right"><button class="btn btn-default" type="submit">Delete answer</button>
+            <button class="btn btn-codaisseur" type="submit">  Edit answer  </button></td>
           </td>
         </tr>
       <% end %>
