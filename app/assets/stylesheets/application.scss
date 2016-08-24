@@ -194,6 +194,10 @@ ul.nav a:hover {
     color:#c1272d;
 }
 
+.table tr:first-child td {
+    border-top:none;
+}
+
 .search-bar {
     background-color: #fff;
     border: none;
