@@ -58,6 +58,9 @@ body {
     .navbar-default .navbar-text {
     display: none;
     }
+    .dropdown-menu li {
+        border:none;
+    }
 }
 
 .navbar .navbar-collapse {
@@ -75,6 +78,23 @@ ul.nav a:hover {
 .navbar-default .navbar-nav > .active > a {
     color: #c1272d;
 }
+
+.caret-up {
+    width: 0; 
+    height: 0; 
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+    
+    display: inline-block;
+    margin-left: 2px;
+    vertical-align: middle;
+}
+
+.dropdown-menu {
+    text-align: center;
+}
+
 
 /* Style Devise login & sign-up page */
 
@@ -286,4 +306,6 @@ td.image-col-width {
 .pagination > li > a, .pagination > li > span {
     color: #c1272d;
 }
+
+
 
