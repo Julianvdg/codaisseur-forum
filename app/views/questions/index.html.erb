@@ -1,7 +1,6 @@
 
-<h1>Questions</h1>
-<p>Minim tousled iPhone master cleanse normcore bespoke. Aute magna truffaut exercitation
-mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
+<h1 class= "text-center">Questions</h1>
+<p class= "text-center">There is no such thing as a stupid question, only stupid people.</p>
 <p id="notice"><%= notice %></p>
 
 <div class="user-controls controls-wrapper">
@@ -26,12 +25,12 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     </div>
     </div>
     <div class="row sorting-links">
-        <div class="col-md-4">
+        <div class="col-md-12">
             <ul class="list-inline">
                 <li class="active"><%= sort_link "title" %></li>
                 <li><%= sort_link "topic_id" %></li>
                 <li><%= sort_link "created_at" %></li>
-            </ul>
+                <li class= "pull-right "><%= will_paginate @questions %></li>
         </div>
     </div>
 </div>
@@ -42,24 +41,25 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     <% @questions.each do |question| %>
             <tr>
             <% if question.user.is_teacher? || question.user.is_admin? %>
+
               <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
             <% else %>
               <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
             <% end %>
-            <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p></p></td>
+            <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p><%= question.topic.title %></p></td>
 
             <td><h6 class="text-right">Answers</h6><p class= "text-right"><%= question.answers.count %></p></td>
+
               </tr>
       <% end %>
     </tbody>
   </table>
 </div>
-
-
-<br>
-
-<%= link_to 'New Question', new_question_path %>
-<br>
-<br>
-
-<%= will_paginate @questions %>
+<div class="user-controls controls-wrapper2">
+    <div class="row">
+    <div class="col-sm-12 col-md-12 col-xs-12">
+      <div class= "pull-right" ><%= will_paginate @questions %>
+      </div>
+      </div>
+      </div>
+      </div>
