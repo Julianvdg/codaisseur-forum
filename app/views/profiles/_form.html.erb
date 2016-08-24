@@ -16,7 +16,7 @@
     <% if @user.is_student? %>
       <tr>
         <td><%= f.label 'Which class are/were you in?' %></td>
-        <td><%= f.text_field :student_class %></td>
+        <td><%= f.select :student_class, options_for_select(1..10, @profile.student_class), { include_blank: true, prompt: true } %></td>
       </tr>
     <% end %>
     <tr>
