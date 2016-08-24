@@ -12,13 +12,13 @@
       </td>
       <td>
         <h3><%= @question.title %></h3>
-        <p class="question-time-ago"><b><%= time_ago_in_words(@question.created_at).capitalize %> ago</b> by <b><%= @question.user.profile.full_name %></b></p>
+        <p class="question-time-ago"><b>created <%= time_ago_in_words(@question.created_at) %> ago by <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %></b></p>
         <p><%= markdown(@question.body) %></p>
       </td>
-      <td>
+      
         <td class="text-right"><button class="btn btn-default" type="submit">Delete question</button>
         <button class="btn btn-codaisseur" type="submit">Edit question</button></td>
-      </td>
+      
     </tbody>
   </table>
 <hr>
@@ -34,14 +34,14 @@
           <td><%= link_to image_tag(answer.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: answer.user.profile.id%>
           </td>
           <td>
-            <p class="answer-time-ago"> <b><%= answer.user.profile.full_name%> </b><%= time_ago_in_words(answer.created_at) %> ago</p>
+            <p class="answer-time-ago"> <%= link_to answer.user.profile.full_name, controller: :profiles, action: :show, id: answer.user.profile.id %>&nbsp;<%= time_ago_in_words(answer.created_at) %> ago</p>
 
             <p><%= markdown(answer.body) %></p>
           </td>
-          <td>
+          
             <td class="text-right"><button class="btn btn-default" type="submit">Delete answer</button>
             <button class="btn btn-codaisseur" type="submit">  Edit answer  </button></td>
-          </td>
+          
         </tr>
       <% end %>
     </tbody>
