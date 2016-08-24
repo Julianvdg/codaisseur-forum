@@ -3,7 +3,6 @@ helper_method :sort_column, :sort_direction
 
 
   def index
-
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 5)
     else
@@ -17,13 +16,12 @@ helper_method :sort_column, :sort_direction
   end
 
   def create
-     @question = Question.new(params.require(:question).permit(:title, :body, :topic_id))
-     @question.user = current_user
-     authorize! :create, @question
-     @question.save
-     redirect_to @question
-
-   end
+    @question = Question.new(params.require(:question).permit(:title, :body, :topic_id))
+    @question.user = current_user
+    authorize! :create, @question
+    @question.save
+    redirect_to @question
+  end
 
   def update
     question_params = params.require( :question ).permit( :content )
@@ -53,6 +51,4 @@ helper_method :sort_column, :sort_direction
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
-
 end

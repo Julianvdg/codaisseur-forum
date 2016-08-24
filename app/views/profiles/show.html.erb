@@ -35,7 +35,13 @@
         <th>Website</th>
         <td><%= link_to @profile.website, @profile.website %></td>
       </tr>
+      <tr>
+        <td colspan="2" class="text-right">
+          <%= link_to 'Back', profiles_path, class: 'btn btn-cancel' %>
+          <%= link_to 'Edit', edit_profile_path(@profile.id), class: 'btn btn-codaisseur' %>
+        </td>
+      </tr>
     </tbody>
   </table>
-  <%= link_to 'Back', profiles_path %>
+
 </div>
