@@ -28,7 +28,8 @@
                 <li class="active"><%= sort_link "title" %></li>
                 <li><%= sort_link "topic_id" %></li>
                 <li><%= sort_link "created_at" %></li>
-                <li class= "pull-right "><%= will_paginate @questions %></li>
+                <li class= "pull-right "><%= will_paginate @questions, renderer: BootstrapPagination::Rails %></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -56,7 +57,7 @@
 <div class="user-controls controls-wrapper2">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-xs-12">
-      <div class= "pull-right" ><%= will_paginate @questions %>
+      <div class= "text-center" ><%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
       </div>
       </div>
       </div>
