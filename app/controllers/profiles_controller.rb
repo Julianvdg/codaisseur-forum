@@ -4,20 +4,26 @@ class ProfilesController < ApplicationController
 
   def index
     @users = User.order("#{sort_column} #{sort_direction}")
+       authorize! :read, @users
   end
 
   def show
     @profile = Profile.find(params[:id])
   end
-    
-    
         
-def approve_user
-    user = User.find(params[:id])
-    user.approved = true
-    user.save
-  redirect_to user_management_path
-end
+    def approve_user
+        user = User.find(params[:id])
+        user.approved = true
+        user.save
+        redirect_to user_management_path
+    end
+    
+    def disable_user
+        user = User.find(params[:id])
+        user.disabled = true
+        user.save
+        redirect_to user_management_path
+    end
 
   private
 
