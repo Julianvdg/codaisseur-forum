@@ -15,3 +15,8 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
+
+
+$(function() {
+    $('.alert').delay(3000).slideUp(500)
+});
