@@ -12,7 +12,7 @@
   <% @question.answers.each do |answer| %>
     <div class="answer">
       <%= answer.user.email %><br>
-      <%= answer.body %>
+      <%= markdown(answer.body) %>
     </div>
     <br>
   <% end %>
@@ -31,3 +31,6 @@
     <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
   </div>
 <% end %>
+
+
+<%= link_to 'Back', root_path %>

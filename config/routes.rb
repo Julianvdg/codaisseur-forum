@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
+    devise_for :users
 
-  root 'questions#index'
-  resources :questions do
-    resources :answers
-  end
+    root 'questions#index'
+    resources :questions do
+        resources :answers
+    end
 
-  get "questions/:id" => "questions#show"
+    resources :profiles
 
+    get "questions/:id" => "questions#show"
 
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+    get "user-management" => "profiles#index", as: 'user_management'
+    
+    get 'users/:id/approve'=> 'profiles#approve_user', as: 'approve_user'
 end

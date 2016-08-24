@@ -1,2 +1,77 @@
 <h1>Questions#index</h1>
 <p>Find me in app/views/questions/index.html.erb</p>
+
+
+<p id="notice"><%= notice %></p>
+
+<h1>Questions</h1>
+
+<br>
+<br>
+<%= form_tag(questions_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
+<%= submit_tag "Search" %>
+<% end %>
+
+<% if @questions.present? %>
+  <% render "form" %>
+<% else %>
+  <p>There are no questions containing the term(s) <%= params[:search] %>.</p>
+<% end %>
+
+<br>
+<br>
+
+<tr>
+      <th><%= sort_link "title" %></th>
+      <th><%= sort_link "topic_id" %></th>
+      <th><%= sort_link "created_at", "Added On" %></th>
+    </tr>
+
+<table>
+
+    <% @questions.each do |question| %>
+      <div class="row">
+            <tr>
+              <th width="40%"><%= link_to question.title, question %></th>
+              <th width="10%">Answers</th>
+            </tr>
+      </div>
+      <div class="row">
+            <tr>
+              <th width="40%"><%= question.created_at.to_s(:long) %></th>
+              <th width="10%"><%= question.answers.count %></th>
+            </tr>
+      </div>
+      <div class="row">
+            <tr>
+              <th width="10%"><%= question.topic.title %></th>
+            </tr>
+      </div>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+
+<%= link_to 'New Question', new_question_path %>
+<br>
+<br>
+
+<%= will_paginate @questions %>

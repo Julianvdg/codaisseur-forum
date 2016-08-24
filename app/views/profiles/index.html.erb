@@ -1,0 +1,73 @@
+<h2>User management</h2>
+<p>Minim tousled iPhone master cleanse normcore bespoke. Aute magna truffaut exercitation
+mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
+
+<div class="user-controls controls-wrapper">
+    <div class="row">
+    <div class="col-sm-4 col-xs-8">
+        <div class="input-group">
+            <input type="text" class="form-control search-bar" placeholder="Enter email" name="srch-term" id="srch-term">
+            <div class="input-group-btn">
+                <button class="btn btn-codaisseur" type="submit">Add User</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button class="btn btn-codaisseur" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+            </div>
+            <input type="text" class="form-control search-bar" placeholder="Search" name="srch-term" id="srch-term">
+        </div>
+    </div>
+    </div>
+    <div class="row sorting-links">
+        <div class="col-md-4">
+            <ul class="list-inline">
+                <li class="active"><%= sort_link "created_at", "New" %></li>
+                <li><%= sort_link "email" %></li>
+                <li><%= sort_link "role" %></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="table-wrapper">
+  <table class="table table-hover table-users">
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <% if !user.profile.nil? %>
+            <% if user.is_teacher? || user.is_admin? %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %></td>
+            <% else %>
+              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %></td>
+            <% end %>
+            <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <% if user.approved != true %>
+            <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td class="text-right"><button class="btn btn-default" type="submit">Delete User</button>
+            <button class="btn btn-codaisseur" type="submit">Edit User</button></td>
+          <% else %>
+            <td></td>
+            <td></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+            <% if user.approved != true %>
+            <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
+            <% else %>
+            <td></td>
+            <% end %>
+            <td class="text-right"><button class="btn btn-default" type="submit">Delete User</button>
+            <button class="btn btn-codaisseur" type="submit">Edit User</button></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
