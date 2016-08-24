@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     get "questions/:id" => "questions#show"
 
-    get "user-management" => "profiles#index"
-
+    get "user-management" => "profiles#index", as: 'user_management'
+    
+    get 'users/:id/approve'=> 'profiles#approve_user', as: 'approve_user'
 end
