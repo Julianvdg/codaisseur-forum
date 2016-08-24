@@ -13,6 +13,12 @@
       <td><%= f.label :last_name %></td>
       <td><%= f.text_field :last_name %></td>
     </tr>
+    <% if @user.is_student? %>
+      <tr>
+        <td><%= f.label 'Which class are/were you in?' %></td>
+        <td><%= f.text_field :student_class %></td>
+      </tr>
+    <% end %>
     <tr>
       <td><%= f.label 'About you' %></td>
       <td><%= f.text_area :bio %></td>

@@ -11,13 +11,14 @@ class ProfilesController < ApplicationController
   end
 
   def new
-    if !current_user.profile.nil?
+    @user = current_user
+    if !@user.profile.nil?
       redirect_to root_path
     end
   end
 
   def create
-    @profile = Profile.new(params.require(:profile).permit(:avatar, :first_name, :last_name, :bio, :github, :twitter, :website))
+    @profile = Profile.new(params.require(:profile).permit(:avatar, :first_name, :last_name, :student_class, :bio, :github, :twitter, :website))
     @profile.user = current_user
     authorize! :create, @profile
     @profile.save
