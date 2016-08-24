@@ -13,7 +13,7 @@
       <td>
         <h3><%= @question.title %></h3>
         <p class="question-time-ago"><b><%= time_ago_in_words(@question.created_at).capitalize %> ago</b> by <b><%= @question.user.profile.full_name %></b></p>
-        <p><%= @question.body %></p>
+        <p><%= markdown(@question.body) %></p>
       </td>
     </tbody>
   </table>
