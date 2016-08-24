@@ -182,6 +182,18 @@ ul.nav a:hover {
 .table-users tr {
     height: 67px;
 }
+
+.table-users a.glyphicon {
+    color:#333;
+    font-size: 17px;
+    padding-right: 5px;
+}
+
+.table-users a.glyphicon:hover {
+    text-decoration: none;
+    color:#c1272d;
+}
+
 .search-bar {
     background-color: #fff;
     border: none;
