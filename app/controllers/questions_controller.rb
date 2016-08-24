@@ -3,13 +3,18 @@ helper_method :sort_column, :sort_direction
 
 
   def index
-
+      
+    if user_signed_in?
+        if current_user.disabled == true 
+            sign_out_and_redirect(current_user)  
+        end
+    end
+      
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 5)
     else
       @questions = Question.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
     end
-    authorize! :read, @questions
   end
 
   def show
@@ -17,20 +22,19 @@ helper_method :sort_column, :sort_direction
   end
 
   def create
-     @question = Question.new(params.require(:question).permit(:title, :body, :topic_id))
-     @question.user = current_user
-     authorize! :create, @question
-     @question.save
-     redirect_to @question
-
-   end
+    @question = Question.new(params.require(:question).permit(:title, :body, :topic_id))
+    @question.user = current_user
+    authorize! :create, @question
+    @question.save
+    redirect_to @question
+  end
 
   def update
     question_params = params.require( :question ).permit( :content )
 
     @question = question.update( content: question_params[:content] )
     @question.user = current_user
-    authorize! :update, @question
+
   end
 
   def user
@@ -53,6 +57,4 @@ helper_method :sort_column, :sort_direction
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
-
 end

@@ -13,4 +13,7 @@ Rails.application.routes.draw do
     get "user-management" => "profiles#index", as: 'user_management'
     
     get 'users/:id/approve'=> 'profiles#approve_user', as: 'approve_user'
+    
+    get 'users/:id/disable'=> 'profiles#disable_user', as: 'disable_user'
+    
 end

@@ -35,7 +35,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 <div class="table-wrapper">
   <table class="table table-hover table-users">
     <tbody>
-      <% @users.each do |user| %>
+      <% @users.where(:disabled => false).each do |user| %>
         <tr>
           <% if !user.profile.nil? %>
             <% if user.is_teacher? || user.is_admin? %>
@@ -46,6 +46,11 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
+            <% if !user.is_admin? %>
+            <td><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %></td>
+            <% else %>
+            <td></td>
+            <% end %>
             <% if user.approved != true %>
             <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
             <% else %>
@@ -58,6 +63,11 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <td></td>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
+            <% if !user.is_admin? %>
+            <td><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %></td>
+            <% else %>
+            <td></td>
+            <% end %>
             <% if user.approved != true %>
             <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
             <% else %>
@@ -68,6 +78,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
           <% end %>
         </tr>
       <% end %>
+      
     </tbody>
   </table>
 </div>
