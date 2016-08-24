@@ -22,6 +22,8 @@
         <li><span class="navbar-text">Welcome, <%= !current_user.profile.nil? ? current_user.profile.full_name : current_user.email %></span></li>
         <% if current_user.profile.nil? %>
           <li class="border-top"><%= link_to 'Create profile', new_profile_path %></li>
+        <% else %>
+          <li class="border-top"><%= link_to 'Edit profile', edit_profile_path(current_user.id) %></li>
         <% end %>
         <li class="border-top"><%= link_to "Log Out", destroy_user_session_path, :method => :delete %></li>
         <% end %>
