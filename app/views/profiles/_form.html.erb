@@ -1,0 +1,48 @@
+<%= form_for :profile, url: profiles_path do |f| %>
+<table class="table table-wrapper">
+  <tbody>
+    <tr>
+      <td><%= f.label :avatar %></td>
+      <td><%= f.text_field :avatar %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :first_name %></td>
+      <td><%= f.text_field :first_name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :last_name %></td>
+      <td><%= f.text_field :last_name %></td>
+    </tr>
+    <% if @user.is_student? %>
+      <tr>
+        <td><%= f.label 'Which class are/were you in?' %></td>
+        <td><%= f.text_field :student_class %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td><%= f.label 'About you' %></td>
+      <td><%= f.text_area :bio %></td>
+    </tr>
+    <tr>
+      <td><%= f.label 'Github username' %></td>
+      <td><%= f.text_field :github %></td>
+    </tr>
+    <tr>
+      <td><%= f.label 'Twitter username' %></td>
+      <td><%= f.text_field :twitter %></td>
+    </tr>
+    <tr>
+      <td><%= f.label 'Website URL' %></td>
+      <td><%= f.text_field :website %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="actions btn-submit-wrapper">
+        <%= f.hidden_field :user_id, value: current_user.id  %>
+        <%= button_tag 'Cancel', type: 'button', class: "btn btn-cancel" %>
+        <%= f.submit class: "btn btn-codaisseur" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
