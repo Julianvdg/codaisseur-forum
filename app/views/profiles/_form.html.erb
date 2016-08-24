@@ -38,7 +38,7 @@
     <tr>
       <td colspan="2" class="actions btn-submit-wrapper">
         <%= f.hidden_field :user_id, value: current_user.id  %>
-        <%= button_tag 'Cancel', type: 'button', class: "btn btn-cancel" %>
+        <%= link_to 'Cancel', profile_path(@profile.id), class: "btn btn-cancel" %>
         <%= f.submit class: "btn btn-codaisseur" %>
       </td>
     </tr>
