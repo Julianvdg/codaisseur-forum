@@ -39,7 +39,7 @@
       </div>
       <div class="row">
             <tr>
-              <th width="40%"><%= question.created_at.to_s(:long) %></th>
+              <th width="40%"> created <%= time_ago_in_words(question.created_at) %> ago by <%= question.user.profile.full_name %></th>
               <th width="10%"><%= question.answers.count %></th>
             </tr>
       </div>
