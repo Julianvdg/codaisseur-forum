@@ -1,11 +1,14 @@
 
+<%= link_to 'Back', root_path %>
+
+
 <h3><%= @question.title %></h3>
 <p><%= @question.body %></p>
 
 
-<h3>
+<h4>
   <%= pluralize(@question.answers.length, 'Answer') %>
-</h3>
+</h4>
 
 
 <div class="answers">
@@ -20,17 +23,6 @@
 
 
 
-<h3>Add an Answer</h3>
+<h4>Add an Answer</h4>
 
-<%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
-  <%= f.hidden_field :question_id %>
-  <div class="field">
-    <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details..." %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
-  </div>
-<% end %>
-
-
-<%= link_to 'Back', root_path %>
+<%= render 'answers/form' %>
