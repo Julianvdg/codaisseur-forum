@@ -4,6 +4,7 @@ class ProfilesController < ApplicationController
 
   def index
     @users = User.order("#{sort_column} #{sort_direction}")
+    authorize! :read, @users
   end
 
   def show
@@ -42,6 +43,7 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @user = @profile.user
+    authorize! :edit, @profile
   end
 
   def update
