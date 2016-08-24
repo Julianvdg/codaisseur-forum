@@ -17,9 +17,7 @@
 //= require bootstrap.min
 
 
-$(function() {
-    $('.alert').delay(3000).slideUp(500)
-});
+
 
 document.addEventListener("turbolinks:load", function() {
 $(".dropdown").hover(            
