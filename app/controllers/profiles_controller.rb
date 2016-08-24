@@ -16,6 +16,14 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def create
+    @profile = Profile.new(params.require(:profile).permit(:avatar, :first_name, :last_name, :bio, :github, :twitter, :website))
+    @profile.user = current_user
+    authorize! :create, @profile
+    @profile.save
+    redirect_to @profile
+  end
+
   private
 
   def sortable_columns

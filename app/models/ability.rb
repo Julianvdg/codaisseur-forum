@@ -15,6 +15,7 @@ class Ability
         # own Question and Answer
         can :manage, Question, user: user
         can :manage, Answer, user: user
+        can [:create, :edit], Profile, user: user
       end
     end
   end
