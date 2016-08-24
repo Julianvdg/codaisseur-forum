@@ -21,14 +21,14 @@ class User < ApplicationRecord
   ROLES = %w(student teacher admin)
 
   def is_admin?
-    role == 'admin'
+    role == 'admin' && disabled == false
   end
 
   def is_teacher?
-    role == 'teacher'
+    role == 'teacher' && disabled == false
   end
 
   def is_student?
-    role == 'student'
+    role == 'student' && disabled == false
   end
 end
