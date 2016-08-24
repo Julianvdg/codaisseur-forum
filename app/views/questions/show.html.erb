@@ -1,37 +1,48 @@
-
-<h3><%= @question.title %></h3>
-<p><%= markdown(@question.body) %></p>
-
-
-<h3>
-  <%= pluralize(@question.answers.length, 'Answer') %>
-</h3>
-
-
-<div class="answers">
-  <% @question.answers.each do |answer| %>
-    <div class="answer">
-      <%= answer.user.email %><br>
-      <%= markdown(answer.body) %>
-    </div>
-    <br>
-  <% end %>
+<div class="padding-link">
+<%= link_to 'Back to Overview', root_path, class: 'link-back'  %>
 </div>
 
 
 
-<h3>Add an Answer</h3>
+<div class="table-wrapper">
+  <table class="table table-question">
+    <tbody>
+      <td style="padding-top:30px">
+        <%= link_to image_tag(@question.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: @question.user.profile.id %>
+      </td>
+      <td>
+        <h3><%= @question.title %></h3>
+        <p class="question-time-ago"><b><%= time_ago_in_words(@question.created_at).capitalize %> ago</b> by <b><%= @question.user.profile.full_name %></b></p>
+        <p><%= @question.body %></p>
+      </td>
+    </tbody>
+  </table>
 
-<%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
-  <%= f.hidden_field :question_id %>
-  <%= f.hidden_field :user_id, :value => current_user.id  %>
-  <div class="field">
-    <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details..." %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
-  </div>
-<% end %>
 
+<h4>
+  <%= pluralize(@question.answers.length, 'Answer') %>
+</h4>
 
-<%= link_to 'Back', root_path %>
+  <table class="table table-hover table-answers">
+    <tbody>
+      <% @question.answers.each do |answer| %>
+        <tr>
+          <td><%= link_to image_tag(answer.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: answer.user.profile.id%>
+          </td>
+          <td>
+            <p class="answer-time-ago"> <b><%= answer.user.profile.full_name%> </b><%= time_ago_in_words(answer.created_at) %> ago</p>
+
+            <p><%= markdown(answer.body) %></p>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<br>
+
+<h4>Add an Answer</h4>
+
+<%= render 'answers/form' %>
+
+</div>

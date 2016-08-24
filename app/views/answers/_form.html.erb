@@ -1,0 +1,14 @@
+<table class="table">
+    <td class="image-col-width"><%= link_to image_tag(current_user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: current_user.profile.id %></td>
+    <td>
+      <%= form_for([@question, @question.answers.new], class: 'form-group') do |f| %>
+        <%= f.hidden_field :question_id %>
+        <div class="field">
+          <%= f.text_area :body, class: 'form-control', placeholder: "Add answer details...", rows: "8" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Post answer", class: 'btn btn-codaisseur' %>
+        </div>
+      <% end %>
+    </td>
+</table>

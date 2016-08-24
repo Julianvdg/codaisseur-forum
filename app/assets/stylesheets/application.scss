@@ -225,6 +225,35 @@ ul.nav a:hover {
     display: inline-block;
   }
 }
+
+/* Answers page styling */
+
+td.image-col-width {
+  width: 80px;
+}
+
+.table-question {
+  vertical-align: middle;
+}
+.question-time-ago {
+
+}
+.answer-time-ago {
+  font-size: 12px;
+}
+.padding-link{
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+.link-back {
+  color: #a9a9a9;
+  margin-bottom: 50px;
+}
+.link-back:hover {
+  text-decoration: none;
+  color: #c1272d;
+}
 .btn-submit-wrapper {
   text-align: right;
 }
