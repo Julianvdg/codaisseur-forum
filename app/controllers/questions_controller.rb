@@ -52,14 +52,14 @@ helper_method :sort_column, :sort_direction
 
   private
   def sortable_columns
-    ["topic_id", "created_at", "title"]
+    [ "created_at", "title", "topic_id"]
   end
 
   def sort_column
-    sortable_columns.include?(params[:column]) ? params[:column] : "title"
+    sortable_columns.include?(params[:column]) ? params[:column] : "created_at"
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "desc"
   end
 end
