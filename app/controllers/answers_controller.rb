@@ -24,20 +24,13 @@ class AnswersController < ApplicationController
 
 
    def update
-    @question = Questions.find(params[:question_id])
-    @answer = @question.answers.find(params[:id])
+     @answer = Answer.find(params[:answer_id])
 
-    if @answer.user_id = current_iser.id
-      if @answer.update(answers_params)
-        respond_to do |format|
-          format.html { redirect_to question_path(@question)}
-          format.js
-        end
+      if @answer.update(params.permit(:body, :user_id, :question_id))
+        render json: @answer
       else
-        flash[:alert] = "Something wrong, try again"
-        render root_path
+        render json: {error: "could not update answer"}
       end
-    end
   end
 
 

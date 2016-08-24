@@ -34,14 +34,16 @@
 
             <div id="answer-<%= answer.id %>" class="answer-body"><%= markdown(answer.body) %></div>
 
+            <% if answer.user_id == current_user.id %>
             <div class="buttons">
               <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs edit-btn">Edit</button>
             </div>
 
             <div id="form-<%= answer.id %>" class="edit-answer-form">
-              <textarea class='form-control' name="name" rows="6"><%= answer.body %></textarea>
-              <button class="btn-codaisseur btn pull-right">Save edit</button>
+              <textarea class='form-control edit-body' name="name" rows="6"><%= answer.body %></textarea>
+              <button answer_id="<%= answer.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit">Save edit</button>
             </div>
+            <%end%>
 
           </td>
         </tr>
