@@ -57,6 +57,8 @@ class ProfilesController < ApplicationController
   end
 
   def profile_params
-      params.require( :profile ).permit(:avatar, :first_name, :last_name, :student_class, :bio, :github, :twitter, :website)
+    params.require(:profile).permit(:avatar, :first_name, :last_name, :student_class, :bio, :github, :twitter, :website).tap do |person_params|
+      person_params.require([:first_name, :last_name])
+    end
   end
 end

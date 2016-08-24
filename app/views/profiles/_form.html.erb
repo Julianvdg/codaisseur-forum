@@ -7,11 +7,11 @@
     </tr>
     <tr>
       <td><%= f.label :first_name %></td>
-      <td><%= f.text_field :first_name %></td>
+      <td><%= f.text_field :first_name, required: true %></td>
     </tr>
     <tr>
       <td><%= f.label :last_name %></td>
-      <td><%= f.text_field :last_name %></td>
+      <td><%= f.text_field :last_name, required: true %></td>
     </tr>
     <% if @user.is_student? %>
       <tr>
