@@ -30,9 +30,9 @@
     <div class="row sorting-links">
         <div class="col-md-12">
             <ul class="list-inline">
-                <li class="active"><%= sort_link "title" %></li>
+                <li class="active"><%= sort_link "created_at", "New"  %></li>
+                <li><%= sort_link "title" %></li>
                 <li><%= sort_link "topic_id" %></li>
-                <li><%= sort_link "created_at" %></li>
                 <li class= "pull-right "><%= will_paginate @questions, renderer: BootstrapPagination::Rails %></li>
             </ul>
         </div>
