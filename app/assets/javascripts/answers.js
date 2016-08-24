@@ -1,6 +1,5 @@
 $(document).ready(function() {
 
-
   $('.edit-btn').click(function(){
     var id = $(this).attr('id');
     $('#answer-'+id).toggle();
@@ -20,7 +19,6 @@ $(document).ready(function() {
       dataType: "json",
       data: {'body': body, 'question_id': question_id, 'answer_id': answer_id},
       success: function(response) {
-        console.log(response);
         $('#answer-'+answer_id).html(response.body).show();
         $('#form-'+answer_id).hide();
 
