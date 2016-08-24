@@ -277,3 +277,12 @@ td.image-col-width {
 .pagination {
   margin-top: 0px
 }
+
+.pagination > .active > span {
+    background-color: #c1272d;
+    border-color: #c1272d;
+}
+
+.pagination > li > a, .pagination > li > span {
+    color: #c1272d;
+}
