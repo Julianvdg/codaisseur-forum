@@ -1,21 +1,33 @@
-<%= form_for :question, url: questions_path do |f| %>
-<p>
-  <%= f.label :title %><br>
-  <%= f.text_field :title %>
-</p>
-<p>
-  <%= f.label :body %><br>
-  <%= f.text_area :body %>
-</p>
-<p>
-  <%= f.label :image_url %><br>
-  <%= f.text_area :image_url %>
-</p>
-<div class="field">
+
+
+<div class="row new-question">
+<%= form_for :question, class: "form-group" , url: questions_path do |f| %>
+
+<div class="field col-xs-4">
   <%= f.label :topic_id %><br>
-  <%= f.collection_select :topic_id, Topic.all, :id, :title %>
+  <%= f.collection_select :topic_id, Topic.all, :id, :title, {:label => "Choose topic"}, {:class => 'form-control'} %>
 </div>
-<div class="actions">
-  <%= f.submit %>
+
+<div class="col-xs-8 text-right">
+   <%= link_to 'Cancel', root_path, class: 'btn btn-default'  %>
+ <%= f.submit class: 'btn btn-codaisseur' %>
+    
 </div>
+
+<div class="col-xs-12">
+  <%= f.label :title %><br>
+  <%= f.text_field :title, class: "form-control", placeholder: "Type a title for your question..." %>
+</div>
+
+ <div class="col-xs-12">
+  <%= f.label :body %><br>
+  <%= f.text_area :body, class: "form-control", placeholder: "Add question details...", size: "40x15" %>
+</div>
+<div class="col-xs-12">
+  <%= f.label :image_url, "Add image" %><br>
+  <%= f.file_field :image_url %>
+</div>
+
+
 <% end %>
+</div>
