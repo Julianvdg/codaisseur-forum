@@ -254,6 +254,21 @@ td.image-col-width {
   text-decoration: none;
   color: #c1272d;
 }
+
+.answer-content {
+  position:relative;
+}
+
+.answer-content .buttons {
+  position: absolute;
+  top: 5px;
+  right: 0;
+}
+
+.edit-answer-form {
+  display: none;
+}
+
 .btn-submit-wrapper {
   text-align: right;
 }

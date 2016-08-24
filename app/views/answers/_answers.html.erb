@@ -1,0 +1,12 @@
+<% if answer.user_id == current_user.id %>
+  <ul class="comment-menuu menu-comment-line">
+    <li class="dropdown">
+      <a href="#" class="dropdown-toggle menu-right-comment  " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Edit", edit_question_answer_path(question, answer), remote: true %></li>
+        <li role="separator" class="divider"></li>
+        <li><%= link_to "delete", question_answer_path(question, answer), method: :delete, data: { confirm: "Are you sure?" }, remote: true %></li>
+      </ul>
+    </li>
+  </ul>
+<% end %>
