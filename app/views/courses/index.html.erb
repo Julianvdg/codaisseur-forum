@@ -1,0 +1,14 @@
+<h2>Course overview</h2>
+
+<div class="table-wrapper">
+  <table class="table table-hover">
+    <tbody>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.name, controller: :courses, action: :show, id: course.id %></td>
+          <td><%= course.starting_at.strftime('%B %Y') + " - " + course.ending_at.strftime('%B %Y') %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
