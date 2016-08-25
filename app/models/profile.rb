@@ -7,4 +7,9 @@ class Profile <  ActiveRecord::Base
   end
 
   mount_uploader :avatar, ImageUploader
+
+  def self.search(search)
+    where("first_name ILIKE ? ", "%#{search}%")
+  end
+
 end

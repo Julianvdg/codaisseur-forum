@@ -3,8 +3,22 @@ class ProfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    @users = User.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
     authorize! :read, @users
+
+    if params[:search]
+      profiles = Profile.search(params[:search]).order(created_at: :desc)
+
+      if profiles.any?
+        users = []
+        profiles.each do |profile|
+          user = profile.user
+          users << user
+        end
+        @users = User.where(id: users.map(&:id)).paginate(:page =>params[:page], :per_page => 5)
+      end
+    else
+      @users = User.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
+    end
   end
 
   def show
@@ -26,6 +40,7 @@ class ProfilesController < ApplicationController
   end
 
   def new
+
     @profile = Profile.new
     @user = current_user
     redirect_to root_path if !@user.profile.nil?
@@ -40,6 +55,7 @@ class ProfilesController < ApplicationController
   end
 
   def edit
+
     @profile = Profile.find(params[:id])
     @user = @profile.user
     authorize! :edit, @profile
@@ -75,6 +91,7 @@ class ProfilesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
+
 
   def profile_params
     params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|
