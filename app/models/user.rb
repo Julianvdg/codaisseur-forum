@@ -5,19 +5,21 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :profile
-    
-  def active_for_authentication? 
-    super && approved? 
-  end 
-    
-     def inactive_message 
-    if !approved? 
-      :not_approved 
-    else 
-      super # Use whatever other message 
-    end 
+
+  def active_for_authentication?
+    super && approved?
   end
 
+     def inactive_message
+    if !approved?
+      :not_approved
+    else
+      super # Use whatever other message
+    end
+  end
+  def self.search(search)
+    where("first_name ILIKE ? ", "%#{search}%")
+  end
   ROLES = %w(student teacher admin)
 
   def is_admin?
