@@ -23,6 +23,12 @@
           <textarea class='form-control edit-body' name="name" rows="6"><%= @question.body %></textarea>
           <button question_id="<%= @question.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-question">Save edit</button>
         </div>
+
+        <div class="buttons">
+          <button id="<%= @question.id %>" class="btn btn-codaisseur btn-xs"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </button>
+        </div>
+
         <%end%>
       </td>
     </tbody>
@@ -53,6 +59,13 @@
               <textarea class='form-control edit-body' name="name" rows="6"><%= answer.body %></textarea>
               <button answer_id="<%= answer.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-answer">Save edit</button>
             </div>
+
+            <div class="buttons">
+              <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs"><%= link_to 'Delete',  question_answer_path(answer.question, answer),   method: :delete, data: { confirm: 'Are you sure?' } %>
+
+              </button>
+            </div>
+
             <%end%>
 
           </tr>

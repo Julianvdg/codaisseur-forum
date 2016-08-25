@@ -32,13 +32,22 @@ helper_method :sort_column, :sort_direction
 
  def update
     @question = Question.find(params[:question_id])
-
+    authorize! :update, @question
      if @question.update(params.permit(:body, :title, :topic_id, :user_id))
        render json: @question
      else
        render json: {error: "could not update question"}
      end
  end
+
+ def destroy
+
+    @question = Question.find(params[:id])
+    authorize! :destroy, @question
+    @question.destroy
+    flash.notice = "Question '#{@question.title}' Deleted!"
+    redirect_to questions_path
+  end
 
   def user
     @user = User.find( params[:user_id] )
