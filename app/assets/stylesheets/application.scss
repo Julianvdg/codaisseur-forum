@@ -32,8 +32,33 @@ body {
 
 }
 
-.padding-top-md {
+h2, h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+.margin-top-sm {
+    margin-top: 30px;
+}
+
+.margin-top-md {
+    margin-top: 60px;
+}
+
+.margin-top-lg {
+    margin-top: 90px;
+}
+
+.padding-top-sm {
     padding-top: 30px;
+}
+
+.padding-top-md {
+    padding-top: 60px;
+}
+
+.padding-top-lg {
+    padding-top: 90px;
 }
 
 .codaisseur-color {
@@ -111,12 +136,16 @@ ul.nav a:hover {
 
 .devise-wrapper {
     background-color: #fff;
-    padding: 30px 50px;
+    padding: 30px 40px;
     border-radius: 5px;
     margin-top: 50px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.40);
     -moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.40);
     box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+}
+
+.devise-wrapper a {
+    color: #B2BBBD;
 }
 
 .btn-codaisseur {
@@ -127,6 +156,19 @@ ul.nav a:hover {
     background-color: #CE2A30;
     color: #fff;
 }
+
+.btn-topic {
+    background-color: #fff;
+    color: #a9a9a9;
+    border-color: #a9a9a9;
+    font-size: 12px;
+    padding: 2px 6px;
+}
+
+.btn-topic:hover {
+    color: #a9a9a9;
+}
+
 .btn-cancel {
     color: #fff;
     background-color: #aaa;
@@ -352,4 +394,22 @@ td.image-col-width {
 
 .new-question label {
     margin-top: 15px;
+}
+
+
+/* Questions index */
+
+.table-wrapper a {
+    color:#000;
+    font-weight: 700;
+}
+
+.table-wrapper a:hover {
+    color:#c1272d;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.content-wrapper textarea {
+    resize: none;
 }
