@@ -91,12 +91,12 @@ ul.nav a:hover {
 }
 
 .caret-up {
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
     border-left: 4px solid rgba(0, 0, 0, 0);
     border-right: 4px solid rgba(0, 0, 0, 0);
     border-bottom: 4px solid;
-    
+
     display: inline-block;
     margin-left: 2px;
     vertical-align: middle;
@@ -325,6 +325,10 @@ td.image-col-width {
   display: none;
 }
 
+.edit-question-form {
+  display: none;
+}
+
 .btn-submit-wrapper {
   text-align: right;
 }
@@ -349,4 +353,3 @@ td.image-col-width {
 .new-question label {
     margin-top: 15px;
 }
-
