@@ -10,26 +10,25 @@ class ProfilesController < ApplicationController
   def show
     @profile = Profile.find(params[:id])
   end
-        
-    def approve_user
-        user = User.find(params[:id])
-        user.approved = true
-        user.save
-        redirect_to user_management_path
-    end
-    
-    def disable_user
-        user = User.find(params[:id])
-        user.disabled = true
-        user.save
-        redirect_to user_management_path
-    end
+
+  def approve_user
+    user = User.find(params[:id])
+    user.approved = true
+    user.save
+    redirect_to user_management_path
+  end
+
+  def disable_user
+    user = User.find(params[:id])
+    user.disabled = true
+    user.save
+    redirect_to user_management_path
+  end
 
   def new
+    @profile = Profile.new
     @user = current_user
-    if !@user.profile.nil?
-      redirect_to root_path
-    end
+    redirect_to root_path if !@user.profile.nil?
   end
 
   def create
@@ -47,8 +46,13 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = profile.update( content: profile_params[:avatar, :first_name, :last_name, :student_class, :bio, :github, :twitter, :website] )
-    authorize! :update, @profile
+    @profile = Profile.find(params[:id])
+
+    if @profile.update_attributes(profile_params)
+      authorize! :update, @profile
+    else
+      render 'edit'
+    end
   end
 
   private
