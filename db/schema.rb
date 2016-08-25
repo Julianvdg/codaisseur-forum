@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160824094708) do
+ActiveRecord::Schema.define(version: 20160825121438) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20160824094708) do
     t.integer  "user_id"
     t.index ["question_id"], name: "index_answers_on_question_id", using: :btree
     t.index ["user_id"], name: "index_answers_on_user_id", using: :btree
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string   "name"
+    t.date     "starting_at"
+    t.date     "ending_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "profiles", force: :cascade do |t|
