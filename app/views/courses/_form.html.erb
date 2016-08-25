@@ -1,0 +1,25 @@
+<%= form_for @course do |f| %>
+
+<table class="table table-wrapper">
+  <tbody>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :starting_at %></td>
+      <td><%= f.text_field :starting_at, required: true %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :ending_at %></td>
+      <td><%= f.text_field :ending_at, required: true %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="actions btn-submit-wrapper">
+        <%= f.submit (@course.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<% end %>
