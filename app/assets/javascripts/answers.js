@@ -12,7 +12,6 @@ function submitAnswer() {
     var question_id = $(this).attr('question_id');
     var body = $('#form-'+answer_id + ' .edit-body').val();
 
-
     $.ajax({
       url: '/questions/'+question_id+'/answers/'+answer_id,
       type: 'PUT',

@@ -45,6 +45,22 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <% end %>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
+            <td>  
+            
+            <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
+            
+            <% select_list = [ 'student', 'teacher', 'admin' ] %>
+            
+
+            <%= select_tag :role, options_for_select([['Student', 'student'] , ['Teacher', 'teacher'] ,['Admin', 'admin']], user.role) %>
+        
+            
+            <%= submit_tag("Update role") %>
+
+            <% end %>
+            
+     
+            </td>
             <td><%= user.role %></td>
             <% if !user.is_admin? %>
             <td class="text-right"><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %>
@@ -89,4 +105,8 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <div class="text-center">
   <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </div>
+  
+  
+  
+  
 </div>

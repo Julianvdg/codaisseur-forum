@@ -60,6 +60,13 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     authorize! :edit, @profile
   end
+    
+  def edit_role
+      user = User.find(params[:id])
+      user.role = params[:role]
+      user.save
+      redirect_to profiles_path
+  end
 
   def update
     @profile = Profile.find(params[:id])
@@ -87,7 +94,7 @@ class ProfilesController < ApplicationController
 
 
   def profile_params
-    params.require(:profile).permit(:avatar, :first_name, :last_name, :student_class, :bio, :github, :twitter, :website).tap do |person_params|
+    params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|
       person_params.require([:first_name, :last_name])
     end
   end

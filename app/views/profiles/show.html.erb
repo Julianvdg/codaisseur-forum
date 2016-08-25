@@ -1,47 +1,105 @@
-<div class="container">
-  <table class="table">
-    <thead>
-      <tr>
-        <td colspan="2" class="profile-name">
-          <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-            <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
-          <% else %>
-            <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
-          <% end %>
-          <div>
-            <span class="h3"><%= @profile.full_name %></span><br>
-            <%= @profile.user.role.capitalize %>
-            <%= 'in class ' + @profile.student_class.to_s if !@profile.student_class.nil? %>
-          </div>
-        </td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-      </tr>
-      <tr>
-        <th>Bio</th>
-        <td><%= @profile.bio %></td>
-      </tr>
-      <tr>
-        <th>Github</th>
-        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github %></td>
-      </tr>
-      <tr>
-        <th>Twitter</th>
-        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter %></td>
-      </tr>
-      <tr>
-        <th>Website</th>
-        <td><%= link_to @profile.website, @profile.website %></td>
-      </tr>
-      <tr>
-        <td colspan="2" class="text-right">
-          <%= link_to 'Back', profiles_path, class: 'btn btn-cancel' %>
-          <%= link_to 'Edit', edit_profile_path(@profile.id), class: 'btn btn-codaisseur' %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
+
+<div class="padding-top-md">
+    <div class="row">
+        <div class="col-sm-4 col-sm-push-8">
+            <h4>Your Account</h4>
+            <p>Minim tousled iPhone master cleanse
+            normcore bespoke. Aute magna truffaut
+            exercitation mustache gentrify migas cray,
+            tacos pabst mumblecore deserunt. </p>
+        </div>
+        <div class="col-sm-8 col-sm-pull-4">
+            <div class="content-wrapper">
+               
+               <div class="col-sm-4">Your photo</div>
+               <div class="col-sm-7 col-sm-offset-1"><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
+                <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+                 <% else %>
+                <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
+              <% end %>
+                </div>
+                
+               <div class="col-sm-4">First name</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <input type="text" class="form-control" readonly value="<%= @profile.first_name %>">
+               </div>
+               
+               <div class="col-sm-4">Last Name</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <input type="text" class="form-control" readonly value="<%= @profile.last_name %>">
+               </div>
+               
+               <div class="col-sm-4">About you</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <textarea class="form-control" placeholder="Tell me something..." readonly>
+                </textarea>
+               </div>
+               
+               <div class="col-sm-4">Github Profile</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <input type="text" class="form-control" readonly value="<%= @profile.github %>">
+               </div>
+               
+               <div class="col-sm-4">Twitter Username</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <input type="text" class="form-control" readonly value="<%= @profile.twitter %>">
+               </div>
+               
+               <div class="col-sm-4">Website</div>
+               <div class="col-sm-7 col-sm-offset-1">
+                   <input type="text" class="form-control" readonly value="<%= @profile.website %>">
+               </div>
+               
+               
+                
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <td colspan="2" class="profile-name">
+                          <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
+                            <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+                          <% else %>
+                            <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
+                          <% end %>
+                          <div>
+                            <span class="h3"><%= @profile.full_name %></span><br>
+                            <%= @profile.user.role.capitalize %>
+                            <%= 'in class ' + @profile.student_class.to_s if !@profile.student_class.nil? %>
+                          </div>
+                        </td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                      </tr>
+                      <tr>
+                        <th>Bio</th>
+                        <td><%= @profile.bio %></td>
+                      </tr>
+                      <tr>
+                        <th>Github</th>
+                        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github %></td>
+                      </tr>
+                      <tr>
+                        <th>Twitter</th>
+                        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter %></td>
+                      </tr>
+                      <tr>
+                        <th>Website</th>
+                        <td><%= link_to @profile.website, @profile.website %></td>
+                      </tr>
+                      <tr>
+                        <td colspan="2" class="text-right">
+                          <%= link_to 'Back', profiles_path, class: 'btn btn-cancel' %>
+                          <%= link_to 'Edit', edit_profile_path(@profile.id), class: 'btn btn-codaisseur' %>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+            </div>
+        </div>
+        
+    </div>
 </div>
