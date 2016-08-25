@@ -1,4 +1,4 @@
-$(document).ready(function() {
+document.addEventListener("turbolinks:load", function() {
 
   $('.edit-btn').click(function(){
     var id = $(this).attr('id');
