@@ -32,7 +32,6 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    debugger
     @profile = Profile.new(profile_params)
     @profile.user = current_user
     authorize! :create, @profile
@@ -41,14 +40,12 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-    debugger
     @profile = Profile.find(params[:id])
     @user = @profile.user
     authorize! :edit, @profile
   end
 
   def update
-    debugger
     @profile = Profile.find(params[:id])
 
     if @profile.update_attributes(profile_params)
