@@ -81,7 +81,9 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
           <% end %>
         </tr>
       <% end %>
-      
     </tbody>
   </table>
+  <div class="text-center">
+  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>

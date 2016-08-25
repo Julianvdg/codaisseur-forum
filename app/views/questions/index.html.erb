@@ -4,15 +4,20 @@
 <div class="user-controls controls-wrapper">
     <div class="row">
     <div class="col-sm-4 col-xs-8">
-      <div class="btn btn-default">
-      <%= link_to 'New Question', new_question_path %>
-      </div>
+      <%= link_to 'New Question', new_question_path, class: "btn btn-codaisseur" %>
         </div>
         <div class="col-sm-8 col-xs-8">
           <div class="input-group pull-right">
             <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
-            <%= text_field_tag :search, params[:search], placeholder: "Search Questions" %>
-            <%= submit_tag "Search" %>
+            
+            <div class="input-group">
+                <%= text_field_tag :search, params[:search], placeholder: "Search Questions", class: "form-control"%>
+               <span class="input-group-btn">
+                 <%= button_tag( :class => "btn btn-codaisseur") do %>
+                    <span class='glyphicon glyphicon-search'></span>
+                 <% end %> 
+               </span>
+            </div>
             <% end %>
             <% if @questions.present? %>
               <% render "form" %>
@@ -25,10 +30,11 @@
     <div class="row sorting-links">
         <div class="col-md-12">
             <ul class="list-inline">
-                <li class="active"><%= sort_link "title" %></li>
+                <li class="active"><%= sort_link "created_at", "New"  %></li>
+                <li><%= sort_link "title" %></li>
                 <li><%= sort_link "topic_id" %></li>
-                <li><%= sort_link "created_at" %></li>
-                <li class= "pull-right "><%= will_paginate @questions %></li>
+                <li class= "pull-right "><%= will_paginate @questions, renderer: BootstrapPagination::Rails %></li>
+            </ul>
         </div>
     </div>
 </div>
@@ -56,7 +62,7 @@
 <div class="user-controls controls-wrapper2">
     <div class="row">
     <div class="col-sm-12 col-md-12 col-xs-12">
-      <div class= "pull-right" ><%= will_paginate @questions %>
+      <div class= "text-center" ><%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
       </div>
       </div>
       </div>
