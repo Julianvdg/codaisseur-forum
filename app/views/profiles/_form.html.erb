@@ -37,8 +37,6 @@
     </tr>
     <tr>
       <td colspan="2" class="actions btn-submit-wrapper">
-        <%= f.hidden_field :user_id, value: current_user.id  %>
-
         <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
       </td>
     </tr>
