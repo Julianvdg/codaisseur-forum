@@ -3,7 +3,6 @@ helper_method :sort_column, :sort_direction
 
 
   def index
-
     if user_signed_in?
       if current_user.disabled == true
         sign_out_and_redirect(current_user)
@@ -13,7 +12,7 @@ helper_method :sort_column, :sort_direction
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 5)
     else
-      @questions = Question.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
+      @questions = Question.order("#{sort_column} #{sort_direction}").filter(params.slice(:topic)).paginate(:page =>params[:page], :per_page => 5)
     end
   end
 
