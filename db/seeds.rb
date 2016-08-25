@@ -36,7 +36,6 @@ pr_matthijs = Profile.create(
   github: "Ecthelion3",
   twitter: "ecthelion3",
   course: traineeship4,
-  student_class: 4,
   user: matthijs
 )
 pr_ruben = Profile.create(
@@ -46,7 +45,6 @@ pr_ruben = Profile.create(
   bio: "Ye show done an into. Fifteen winding related may hearted colonel are way studied.",
   github: "RubenSloote",
   course: traineeship4,
-  student_class: 4,
   user: ruben
 )
 pr_nienke = Profile.create(
@@ -56,7 +54,6 @@ pr_nienke = Profile.create(
   bio: "County suffer twenty or marked no moment in he. Meet shew or said like he.",
   github: "nienkebos",
   course: traineeship4,
-  student_class: 4,
   user: nienke
 )
 pr_juliang = Profile.create(
@@ -68,7 +65,6 @@ pr_juliang = Profile.create(
   twitter: "Julianvdg",
   website: "http://webhippy.com/",
   course: traineeship4,
-  student_class: 4,
   user: juliang
 )
 pr_julianh = Profile.create(
@@ -78,7 +74,6 @@ pr_julianh = Profile.create(
   bio: "Lose john poor same it case do year we. Full how way even the sigh.",
   github: "ijscoman1337",
   course: traineeship4,
-  student_class: 4,
   user: julianh
 )
 pr_miriam = Profile.create(
