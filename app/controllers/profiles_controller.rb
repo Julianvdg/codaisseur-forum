@@ -40,7 +40,6 @@ class ProfilesController < ApplicationController
   end
 
   def new
-
     @profile = Profile.new
     @user = current_user
     redirect_to root_path if !@user.profile.nil?
@@ -60,7 +59,7 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     authorize! :edit, @profile
   end
-    
+
   def edit_role
       user = User.find(params[:id])
       user.role = params[:role]
