@@ -1,4 +1,4 @@
-<div class="padding-link">
+<!-- <div class="padding-link"> -->
 <%= link_to 'Back to Overview', root_path, class: 'link-back'  %>
 </div>
 
@@ -13,12 +13,18 @@
       <td>
         <h3><%= @question.title %></h3>
         <p class="question-time-ago"><b>created <%= time_ago_in_words(@question.created_at) %> ago by <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %></b></p>
-        <p><%= markdown(@question.body) %></p>
+        <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
+        <% if @question.user_id == current_user.id || current_user.is_admin?%>
+        <div class="buttons">
+          <button id="<%= @question.id %>" class="btn btn-codaisseur btn-xs edit-btn-question">Edit</button>
+        </div>
+
+        <div id="form-<%= @question.id %>" class="edit-question-form">
+          <textarea class='form-control edit-body' name="name" rows="6"><%= @question.body %></textarea>
+          <button question_id="<%= @question.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-question">Save edit</button>
+        </div>
+        <%end%>
       </td>
-      
-        <td class="text-right"><button class="btn btn-default" type="submit">Delete question</button>
-        <button class="btn btn-codaisseur" type="submit">Edit question</button></td>
-      
     </tbody>
   </table>
 <hr>
@@ -38,23 +44,18 @@
 
             <div id="answer-<%= answer.id %>" class="answer-body"><%= markdown(answer.body) %></div>
 
-            <% if answer.user_id == current_user.id %>
+            <% if answer.user_id == current_user.id || current_user.is_admin? %>
             <div class="buttons">
-              <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs edit-btn">Edit</button>
+              <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs edit-btn-answer">Edit</button>
             </div>
 
             <div id="form-<%= answer.id %>" class="edit-answer-form">
               <textarea class='form-control edit-body' name="name" rows="6"><%= answer.body %></textarea>
-              <button answer_id="<%= answer.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit">Save edit</button>
+              <button answer_id="<%= answer.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-answer">Save edit</button>
             </div>
             <%end%>
 
-          </td>
-          
-            <td class="text-right"><button class="btn btn-default" type="submit">Delete answer</button>
-            <button class="btn btn-codaisseur" type="submit">  Edit answer  </button></td>
-          
-        </tr>
+          </tr>
       <% end %>
     </tbody>
   </table>
