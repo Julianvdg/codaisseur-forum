@@ -15,8 +15,8 @@
     </tr>
     <% if @user.is_student? %>
       <tr>
-        <td><%= f.label 'Which class are/were you in?' %></td>
-        <td><%= f.select :student_class, options_for_select(1..10), { include_blank: true, prompt: true } %></td>
+        <td><%= f.label :course %></td>
+        <td><%= f.collection_select :course_id, Course.all, :id, :name, { include_blank: true, prompt: true } %></td>
       </tr>
     <% end %>
     <tr>
