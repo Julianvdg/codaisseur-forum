@@ -16,4 +16,6 @@ Rails.application.routes.draw do
     
     get 'users/:id/disable'=> 'profiles#disable_user', as: 'disable_user'
     
+    post 'profiles/edit-role' => 'profiles#edit_role'
+    
 end
