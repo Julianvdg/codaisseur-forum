@@ -35,6 +35,7 @@ pr_matthijs = Profile.create(
   bio: "Call park out she wife face mean. Invitation excellence imprudence understood it continuing to.",
   github: "Ecthelion3",
   twitter: "ecthelion3",
+  course: traineeship4,
   student_class: 4,
   user: matthijs
 )
@@ -44,6 +45,7 @@ pr_ruben = Profile.create(
   avatar: open("https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"),
   bio: "Ye show done an into. Fifteen winding related may hearted colonel are way studied.",
   github: "RubenSloote",
+  course: traineeship4,
   student_class: 4,
   user: ruben
 )
@@ -53,6 +55,7 @@ pr_nienke = Profile.create(
   avatar: open("https://avatars2.githubusercontent.com/u/20145582?v=3&s=460"),
   bio: "County suffer twenty or marked no moment in he. Meet shew or said like he.",
   github: "nienkebos",
+  course: traineeship4,
   student_class: 4,
   user: nienke
 )
@@ -64,6 +67,7 @@ pr_juliang = Profile.create(
   github: "Julianvdg",
   twitter: "Julianvdg",
   website: "http://webhippy.com/",
+  course: traineeship4,
   student_class: 4,
   user: juliang
 )
@@ -73,6 +77,7 @@ pr_julianh = Profile.create(
   avatar: open("https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"),
   bio: "Lose john poor same it case do year we. Full how way even the sigh.",
   github: "ijscoman1337",
+  course: traineeship4,
   student_class: 4,
   user: julianh
 )
