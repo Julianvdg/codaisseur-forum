@@ -13,15 +13,30 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
 
     if @answer.save
-     flash[:notice] = "Thank you for your answer."
-     redirect_to question_path(@question)
-    else
-     render :action => 'new'
+      redirect_to question_path(@question)
+
+
     end
   end
 
-  def update
+
+
+   def update
+     @answer = Answer.find(params[:answer_id])
+
+      if @answer.update(params.permit(:body, :user_id, :question_id))
+        render json: @answer
+      else
+        render json: {error: "could not update answer"}
+      end
   end
 
 
+
+  def destroy
+    @answer = Answer.find(params[:answer_id])
+      @question = Question.find(params[:question_id])
+      @answer.destroy
+      redirect_to question_path(@question)
+  end
 end
