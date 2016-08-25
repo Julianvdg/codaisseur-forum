@@ -16,7 +16,7 @@
     <% if @user.is_student? %>
       <tr>
         <td><%= f.label 'Which class are/were you in?' %></td>
-        <td><%= f.select :student_class, options_for_select(1..10, @profile.student_class), { include_blank: true, prompt: true } %></td>
+        <td><%= f.select :student_class, options_for_select(1..10), { include_blank: true, prompt: true } %></td>
       </tr>
     <% end %>
     <tr>
@@ -38,7 +38,7 @@
     <tr>
       <td colspan="2" class="actions btn-submit-wrapper">
         <%= f.hidden_field :user_id, value: current_user.id  %>
-        <%= link_to 'Cancel', profile_path(@profile.id), class: "btn btn-cancel" %>
+
         <%= f.submit class: "btn btn-codaisseur" %>
       </td>
     </tr>
