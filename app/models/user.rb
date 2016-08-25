@@ -4,22 +4,27 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include Filterable
+  scope :role, -> (role) { where role: role }
+
   has_one :profile
 
   def active_for_authentication?
     super && approved?
   end
 
-     def inactive_message
+  def inactive_message
     if !approved?
       :not_approved
     else
       super # Use whatever other message
     end
   end
+
   def self.search(search)
     where("first_name ILIKE ? ", "%#{search}%")
   end
+  
   ROLES = %w(student teacher admin)
 
   def is_admin?

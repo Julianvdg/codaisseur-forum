@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
         @users = User.where(id: users.map(&:id)).paginate(:page =>params[:page], :per_page => 5)
       end
     else
-      @users = User.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
+      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role)).paginate(:page =>params[:page], :per_page => 5)
     end
   end
 
