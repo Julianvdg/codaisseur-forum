@@ -11,7 +11,7 @@
           <div>
             <span class="h3"><%= @profile.full_name %></span><br>
             <%= @profile.user.role.capitalize %>
-            <%= 'in class ' + @profile.student_class.to_s if !@profile.student_class.nil? %>
+            <%= '(' + @profile.course.name + ')' if !@profile.course.nil? %>
           </div>
         </td>
       </tr>
@@ -21,19 +21,19 @@
       </tr>
       <tr>
         <th>Bio</th>
-        <td><%= @profile.bio %></td>
+        <td><%= @profile.bio if !@profile.bio.nil? %></td>
       </tr>
       <tr>
         <th>Github</th>
-        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github %></td>
+        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github if !@profile.github.nil? %></td>
       </tr>
       <tr>
         <th>Twitter</th>
-        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter %></td>
+        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter if !@profile.twitter.nil? %></td>
       </tr>
       <tr>
         <th>Website</th>
-        <td><%= link_to @profile.website, @profile.website %></td>
+        <td><%= link_to @profile.website, @profile.website if !@profile.website.nil? %></td>
       </tr>
       <tr>
         <td colspan="2" class="text-right">
