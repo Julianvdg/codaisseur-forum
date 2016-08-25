@@ -2,8 +2,8 @@ Answer.delete_all
 Question.delete_all
 Profile.delete_all
 User.delete_all
+Course.delete_all
 Topic.delete_all
-
 
 javascript= Topic.create( title: "Javascript" )
 ruby      = Topic.create( title: "Ruby" )
@@ -13,6 +13,12 @@ html      = Topic.create( title: "Html" )
 ajax      = Topic.create( title: "Ajax" )
 jquery    = Topic.create( title: "JQuery" )
 sinatra   = Topic.create( title: "Sinatra" )
+
+traineeship1 = Course.create( name: "Traineeship 1", starting_at: Date.new(2016,2), ending_at: Date.new(2016,3) )
+traineeship2 = Course.create( name: "Traineeship 2", starting_at: Date.new(2016,4), ending_at: Date.new(2016,5) )
+traineeship3 = Course.create( name: "Traineeship 3", starting_at: Date.new(2016,6), ending_at: Date.new(2016,7) )
+traineeship4 = Course.create( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
+traineeship5 = Course.create( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
 
 matthijs = User.create( email: "matthijs@test.com", password: "abcd1234", role: "student", approved: true )
 ruben = User.create( email: "ruben@test.com", password: "abcd1234", role: "student", approved: true )
@@ -29,7 +35,7 @@ pr_matthijs = Profile.create(
   bio: "Call park out she wife face mean. Invitation excellence imprudence understood it continuing to.",
   github: "Ecthelion3",
   twitter: "ecthelion3",
-  student_class: 4,
+  course: traineeship4,
   user: matthijs
 )
 pr_ruben = Profile.create(
@@ -38,7 +44,7 @@ pr_ruben = Profile.create(
   avatar: open("https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"),
   bio: "Ye show done an into. Fifteen winding related may hearted colonel are way studied.",
   github: "RubenSloote",
-  student_class: 4,
+  course: traineeship4,
   user: ruben
 )
 pr_nienke = Profile.create(
@@ -47,7 +53,7 @@ pr_nienke = Profile.create(
   avatar: open("https://avatars2.githubusercontent.com/u/20145582?v=3&s=460"),
   bio: "County suffer twenty or marked no moment in he. Meet shew or said like he.",
   github: "nienkebos",
-  student_class: 4,
+  course: traineeship4,
   user: nienke
 )
 pr_juliang = Profile.create(
@@ -58,7 +64,7 @@ pr_juliang = Profile.create(
   github: "Julianvdg",
   twitter: "Julianvdg",
   website: "http://webhippy.com/",
-  student_class: 4,
+  course: traineeship4,
   user: juliang
 )
 pr_julianh = Profile.create(
@@ -67,7 +73,7 @@ pr_julianh = Profile.create(
   avatar: open("https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg"),
   bio: "Lose john poor same it case do year we. Full how way even the sigh.",
   github: "ijscoman1337",
-  student_class: 4,
+  course: traineeship4,
   user: julianh
 )
 pr_miriam = Profile.create(
