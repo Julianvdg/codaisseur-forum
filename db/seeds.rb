@@ -2,8 +2,8 @@ Answer.delete_all
 Question.delete_all
 Profile.delete_all
 User.delete_all
+Course.delete_all
 Topic.delete_all
-
 
 javascript= Topic.create( title: "Javascript" )
 ruby      = Topic.create( title: "Ruby" )
@@ -13,6 +13,12 @@ html      = Topic.create( title: "Html" )
 ajax      = Topic.create( title: "Ajax" )
 jquery    = Topic.create( title: "JQuery" )
 sinatra   = Topic.create( title: "Sinatra" )
+
+traineeship1 = Course.create( name: "Traineeship 1", starting_at: Date.new(2016,2), ending_at: Date.new(2016,3) )
+traineeship2 = Course.create( name: "Traineeship 2", starting_at: Date.new(2016,4), ending_at: Date.new(2016,5) )
+traineeship3 = Course.create( name: "Traineeship 3", starting_at: Date.new(2016,6), ending_at: Date.new(2016,7) )
+traineeship4 = Course.create( name: "Traineeship 4", starting_at: Date.new(2016,8), ending_at: Date.new(2016,9) )
+traineeship5 = Course.create( name: "Traineeship 5", starting_at: Date.new(2016,10), ending_at: Date.new(2016,11) )
 
 matthijs = User.create( email: "matthijs@test.com", password: "abcd1234", role: "student", approved: true )
 ruben = User.create( email: "ruben@test.com", password: "abcd1234", role: "student", approved: true )
