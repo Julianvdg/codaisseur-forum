@@ -1,5 +1,12 @@
 <h2>Course management</h2>
 
+<div class="user-controls controls-wrapper">
+  <div class="row">
+    <div class="input-group pull-right">
+      <%= link_to 'New course', new_course_path, class: 'btn btn-codaisseur' %>
+    </div>
+  </div>
+</div>
 <div class="table-wrapper">
   <table class="table table-hover">
     <tbody>
@@ -7,6 +14,10 @@
         <tr>
           <td><%= link_to course.name, controller: :courses, action: :show, id: course.id %></td>
           <td><%= course.starting_at.strftime('%B %Y') + " - " + course.ending_at.strftime('%B %Y') %></td>
+          <td class="text-right">
+            <%= link_to "", { action: :destroy, id: course.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
+            <%= link_to "", edit_course_path(course.id), class: "glyphicon glyphicon-wrench"  %>
+          </td>
         </tr>
       <% end %>
     </tbody>
