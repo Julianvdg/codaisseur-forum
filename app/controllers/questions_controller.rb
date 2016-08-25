@@ -3,7 +3,6 @@ helper_method :sort_column, :sort_direction
 
 
   def index
-
     if user_signed_in?
       if current_user.disabled == true
         sign_out_and_redirect(current_user)
@@ -13,7 +12,7 @@ helper_method :sort_column, :sort_direction
     if params[:search]
       @questions = Question.search(params[:search]).order(created_at: :desc).paginate(:page =>params[:page], :per_page => 5)
     else
-      @questions = Question.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
+      @questions = Question.order("#{sort_column} #{sort_direction}").filter(params.slice(:topic)).paginate(:page =>params[:page], :per_page => 5)
     end
   end
 
@@ -32,13 +31,22 @@ helper_method :sort_column, :sort_direction
 
  def update
     @question = Question.find(params[:question_id])
-
+    authorize! :update, @question
      if @question.update(params.permit(:body, :title, :topic_id, :user_id))
        render json: @question
      else
        render json: {error: "could not update question"}
      end
  end
+
+ def destroy
+
+    @question = Question.find(params[:id])
+    authorize! :destroy, @question
+    @question.destroy
+    flash.notice = "Question '#{@question.title}' Deleted!"
+    redirect_to questions_path
+  end
 
   def user
     @user = User.find( params[:user_id] )

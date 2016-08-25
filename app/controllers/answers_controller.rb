@@ -23,7 +23,7 @@ class AnswersController < ApplicationController
 
    def update
      @answer = Answer.find(params[:answer_id])
-
+     authorize! :update, @answer
       if @answer.update(params.permit(:body, :user_id, :question_id))
         render json: @answer
       else
@@ -34,8 +34,9 @@ class AnswersController < ApplicationController
 
 
   def destroy
-    @answer = Answer.find(params[:answer_id])
-      @question = Question.find(params[:question_id])
+    @question = Question.find(params[:question_id])
+      authorize! :destroy, @answer
+      @answer = @question.answers.find(params[:id])
       @answer.destroy
       redirect_to question_path(@question)
   end
