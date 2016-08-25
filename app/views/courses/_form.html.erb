@@ -8,11 +8,11 @@
     </tr>
     <tr>
       <td><%= f.label :starting_at %></td>
-      <td><%= f.text_field :starting_at, required: true %></td>
+      <td><%= f.date_select :starting_at, discard_day: true, order: [:month, :year], required: true %></td>
     </tr>
     <tr>
       <td><%= f.label :ending_at %></td>
-      <td><%= f.text_field :ending_at, required: true %></td>
+      <td><%= f.date_select :ending_at, discard_day: true, order: [:month, :year], required: true %></td>
     </tr>
     <tr>
       <td colspan="2" class="actions btn-submit-wrapper">
