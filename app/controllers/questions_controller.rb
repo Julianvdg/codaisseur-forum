@@ -31,7 +31,7 @@ helper_method :sort_column, :sort_direction
 
   def edit
      @question = Question.find(params[:post_id])
-     
+
   end
 
   def update
