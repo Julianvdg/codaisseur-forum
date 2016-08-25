@@ -29,18 +29,16 @@ helper_method :sort_column, :sort_direction
     redirect_to @question
   end
 
-  def edit
-     @question = Question.find(params[:post_id])
-     
-  end
 
-  def update
-    question_params = params.require( :question ).permit( :content )
+ def update
+    @question = Question.find(params[:question_id])
 
-    @question = question.update( content: question_params[:content] )
-    @question.user = current_user
-
-  end
+     if @question.update(params.permit(:body, :title, :topic_id, :user_id))
+       render json: @question
+     else
+       render json: {error: "could not update question"}
+     end
+ end
 
   def user
     @user = User.find( params[:user_id] )
