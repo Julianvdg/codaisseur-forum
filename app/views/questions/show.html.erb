@@ -14,7 +14,7 @@
         <h3><%= @question.title %></h3>
         <p class="question-time-ago"><b>created <%= time_ago_in_words(@question.created_at) %> ago by <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %></b></p>
         <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
-        <% if @question.user_id == current_user.id %>
+        <% if @question.user_id == current_user.id || current_user.is_admin?%>
         <div class="buttons">
           <button id="<%= @question.id %>" class="btn btn-codaisseur btn-xs edit-btn-question">Edit</button>
         </div>
@@ -44,7 +44,7 @@
 
             <div id="answer-<%= answer.id %>" class="answer-body"><%= markdown(answer.body) %></div>
 
-            <% if answer.user_id == current_user.id %>
+            <% if answer.user_id == current_user.id || current_user.is_admin? %>
             <div class="buttons">
               <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs edit-btn-answer">Edit</button>
             </div>
