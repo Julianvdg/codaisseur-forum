@@ -1,72 +1,101 @@
 <!-- <div class="padding-link"> -->
-<div>
+<div class="link-back">
+
+  <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
 <%= link_to 'Back to Overview', root_path, class: 'link-back'  %>
 </div>
 
-
+<br>
 
 <div class="content-wrapper">
   <table class="table table-question">
     <tbody>
       <tr>
-        <td style="padding-top:30px">
+      <td style="padding-top:25px">
           <%= render partial: "layouts/avatar", locals: { user: @question.user } %>
-        </td>
-        <td>
-          <h3><%= @question.title %></h3>
-          <p class="question-time-ago"><b>created <%= time_ago_in_words(@question.created_at) %> ago by <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %></b></p>
-          <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
-          <% if @question.user_id == current_user.id || current_user.is_admin? %>
-            <div id="form-<%= @question.id %>" class="edit-question-form">
-              <textarea class='form-control edit-body' name="name" rows="6"><%= @question.body %></textarea>
-            </div>
-          </td>
-          <td>
-            <div class="buttons">
-              <i id="<%= @question.id %>" class=" glyphicon glyphicon-wrench edit-btn-question"></i>
-            </div>
+      </td>
 
-            <div class="buttons">
-              <i id="<%= @question.id %>" class="glyphicon glyphicon-trash"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %></i>
-            </div>
-          <%end%>
-        </td>
-      </tr>
+      <td  class="question-show">
+        <h3 class="question-title"><%= @question.title %></h3>
+
+        <p class="question-time-ago">
+          <%= time_ago_in_words(@question.created_at).capitalize %> ago <span class="by-not-bold">by</span> <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %>
+        </p>
+
+        <p class="btn btn-topic topic-show-btn"><%= @question.topic.title %></p>
+
+
+        <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
+
+        <% if @question.user_id == current_user.id || current_user.is_admin?%>
+
+        <div id="form-<%= @question.id %>" class="edit-question-form">
+          <textarea class='form-control edit-body' name="name" rows="6"><%= @question.body %></textarea>
+          <button question_id="<%= @question.id %>"  class="btn-codaisseur btn pull-right save-edit-question">Save edit</button>
+        </div>
+
+      </td>
+
+      <td class="glyphicon-wrapper">
+          <%= link_to raw("<i class='glyphicon glyphicon-trash'></i>"), @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+
+      <td>
+          <i id="<%= @question.id %>" class="edit-btn-question glyphicon glyphicon-wrench"></i>
+
+        <%end%>
+
+      </td>
+    </tr>
     </tbody>
   </table>
-<hr>
 
-<h4>
+<h4 class="answers-count">
   <%= pluralize(@question.answers.length, 'Answer') %>
 </h4>
 
-  <table class="table table-hover table-answers">
-    <tbody>
-      <% @question.answers.each do |answer| %>
-        <tr>
-          <td><%= render partial: "layouts/avatar", locals: { user: answer.user } %></td>
-          <td>
-            <p class="answer-time-ago"> <%= link_to answer.user.profile.full_name, controller: :profiles, action: :show, id: answer.user.profile.id %>&nbsp;<%= time_ago_in_words(answer.created_at) %> ago</p>
 
-            <div id="answer-<%= answer.id %>" class="answer-body"><%= markdown(answer.body) %></div>
+<table class="table table-hover table-answers">
+  <tbody class="border-top-answers">
 
-            <% if answer.user_id == current_user.id || current_user.is_admin? %>
-            <div class="buttons">
-              <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs edit-btn-answer">Edit</button>
-            </div>
+    <% @question.answers.each do |answer| %>
+      <tr class="tr-answers">
+        <td>
+          <%= render partial: "layouts/avatar", locals: { user: answer.user } %>
+        </td>
+
+        <td class="td-answers">
+
+              <p class="answer-time-ago">
+                <%= link_to answer.user.profile.full_name, controller: :profiles, action: :show, id: answer.user.profile.id %>&nbsp; <%= time_ago_in_words(answer.created_at) %> ago
+              </p>
+
+            <div id="answer-<%= answer.id %>" class="answer-content"><%= answer.body %></div>
 
             <div id="form-<%= answer.id %>" class="edit-answer-form">
-              <textarea class='form-control edit-body' name="name" rows="6"><%= answer.body %></textarea>
+              <textarea class='form-control edit-body' name="name" rows="6">
+                <%= answer.body %>
+              </textarea>
               <button answer_id="<%= answer.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-answer">Save edit</button>
             </div>
 
-            <div class="buttons">
-              <button id="<%= answer.id %>" class="btn btn-codaisseur btn-xs"><%= link_to 'Delete',  question_answer_path(answer.question, answer),   method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if answer.user_id == current_user.id || current_user.is_admin? %>
 
-              </button>
+        </td>
+
+        <td>
+
+            <div class="glyphicon-wrapper">
+              <%= link_to raw("<span class='glyphicon glyphicon-trash'></span>"), question_answer_path(answer.question, answer), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div>
+        </td>
+        <td>
+
+                <i id="<%= answer.id %>" class="edit-btn-answer glyphicon glyphicon-wrench"></i>
             </div>
+        </td>
+        <%end%>
 
-            <%end%>
 
           </tr>
       <% end %>
