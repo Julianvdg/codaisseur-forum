@@ -8,7 +8,7 @@
     <div class="col-sm-5 col-xs-8">
       <div class="input-group">
         <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
-        
+
         <div class="input-group">
             <span class="input-group-addon">
                 <i class="glyphicon glyphicon-search"></i>
@@ -23,7 +23,7 @@
         <% end %>
       </div>
     </div>
-    
+
     <div class="col-sm-3 col-sm-offset-2 col-xs-4">
       <form class="filter_form">
         <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title'), prompt: "Select by topic", onchange: "this.form.submit();", class: "form-control" %>
@@ -58,8 +58,9 @@
         <tr>
           <td style="text-align:right"><%= render partial: "layouts/avatar", locals: { user: question.user } %></td>
           <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p class="btn btn-topic"><%= question.topic.title %></p></td>
-          <td class="text-center"><h3><%= question.answers.count %></h3><p>Answers</p>
-        </td>
+          <td class="text-center"><h3>
+            <%= question.answers.count %></h3><p>Answers</p>
+          </td>
         </tr>
       <% end %>
     </tbody>

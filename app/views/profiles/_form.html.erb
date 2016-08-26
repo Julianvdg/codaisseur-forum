@@ -7,19 +7,15 @@
             exercitation mustache gentrify migas cray,
             tacos pabst mumblecore deserunt. </p>
         </div>
-        
-        
-        
+
+
+
         <div class="col-sm-8 col-sm-pull-4 content-wrapper">
 <%= form_for @profile do |f| %>
        <table class="table table-profile">
           <tbody>
             <tr>
-              <td><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
-                         <% else %>
-                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
-                      <% end %></td>
+              <td><%= render partial: "layouts/avatar", locals: { user: @profile.user, size: 'big' } %></td>
               <td><%= f.file_field :avatar %></td>
             </tr>
             <tr>
@@ -60,7 +56,7 @@
             </tr>
           </tbody>
         </table>
- <% end %>       
+ <% end %>
         </div>
     </div>
 </div>
