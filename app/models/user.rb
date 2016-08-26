@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   include Filterable
   scope :role, -> (role) { where role: role }
+  scope :approved, -> (approved) { where approved: approved }
 
   has_one :profile
 
@@ -24,7 +25,7 @@ class User < ApplicationRecord
   def self.search(search)
     where("first_name ILIKE ? ", "%#{search}%")
   end
-  
+
   ROLES = %w(student teacher admin)
 
   def is_admin?

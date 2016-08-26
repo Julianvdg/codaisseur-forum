@@ -13,6 +13,9 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
               <form class="filter_form">
                 <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin']), prompt: "", onchange: "this.form.submit();" %>
               </form>
+              <form class="filter_form">
+                <%= select_tag 'approved', options_for_select([true, false]), prompt: "", onchange: "this.form.submit();" %>
+              </form>
             </div>
             <div class="input-group">
                 <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
