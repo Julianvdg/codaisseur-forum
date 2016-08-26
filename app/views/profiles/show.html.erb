@@ -9,97 +9,47 @@
             exercitation mustache gentrify migas cray,
             tacos pabst mumblecore deserunt. </p>
         </div>
-        <div class="col-sm-8 col-sm-pull-4">
-            <div class="content-wrapper">
-
-               <div class="col-sm-4">Your photo</div>
-               <div class="col-sm-7 col-sm-offset-1"><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-                <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
-                 <% else %>
-                <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
-              <% end %>
-                </div>
-
-               <div class="col-sm-4">First name</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <input type="text" class="form-control" readonly value="<%= @profile.first_name %>">
-               </div>
-
-               <div class="col-sm-4">Last Name</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <input type="text" class="form-control" readonly value="<%= @profile.last_name %>">
-               </div>
-
-               <div class="col-sm-4">About you</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <textarea class="form-control" placeholder="Tell me something..." readonly>
-                </textarea>
-               </div>
-
-               <div class="col-sm-4">Github Profile</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <input type="text" class="form-control" readonly value="<%= @profile.github %>">
-               </div>
-
-               <div class="col-sm-4">Twitter Username</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <input type="text" class="form-control" readonly value="<%= @profile.twitter %>">
-               </div>
-
-               <div class="col-sm-4">Website</div>
-               <div class="col-sm-7 col-sm-offset-1">
-                   <input type="text" class="form-control" readonly value="<%= @profile.website %>">
-               </div>
-
-
-
-                  <table class="table">
-                    <thead>
-                      <tr>
-                        <td colspan="2" class="profile-name">
-                          <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-                            <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
-                          <% else %>
-                            <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
-                          <% end %>
-                          <div>
-                            <span class="h3"><%= @profile.full_name %></span><br>
-                            <%= @profile.user.role.capitalize %>
-                            <%= '(' + @profile.course.name + ')' if !@profile.course.nil? %>
-                          </div>
-                        </td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                      </tr>
-                      <tr>
-                        <th>Bio</th>
-                        <td><%= @profile.bio if !@profile.bio.nil? %></td>
-                      </tr>
-                      <tr>
-                        <th>Github</th>
-                        <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github if !@profile.github.nil? %></td>
-                      </tr>
-                      <tr>
-                        <th>Twitter</th>
-                        <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter if !@profile.twitter.nil? %></td>
-                      </tr>
-                      <tr>
-                        <th>Website</th>
-                        <td><%= link_to @profile.website, @profile.website if !@profile.website.nil? %></td>
-                      </tr>
-                      <tr>
-                        <td colspan="2" class="text-right">
-                          <%= link_to 'Back', profiles_path, class: 'btn btn-cancel' %>
-                          <%= link_to 'Edit', edit_profile_path(@profile.id), class: 'btn btn-codaisseur' %>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-            </div>
+        
+        
+        
+        <div class="col-sm-8 col-sm-pull-4 content-wrapper">
+        
+        <table class="table table-profile">
+            <tr>  
+                <td>Your photo</td>
+                <td><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
+                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+                         <% else %>
+                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
+                      <% end %></td>
+            </tr>
+            <tr>
+                <td>First name</td>
+                <td><%= @profile.first_name %></td>
+            </tr>
+            <tr>
+                <td>Last name</td>
+                <td><%= @profile.last_name %></td>
+            </tr>
+            <tr>
+                <td>About you</td>
+                <td><%= @profile.bio %></td>
+            </tr>
+            <tr>
+                <td>Guthub Profile</td>
+                <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github %></td>
+            </tr>
+            <tr>
+                <td>Twitter Username</td>
+                <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter %></td>
+            </tr>
+            <tr>
+                <td>Website URL</td>
+                <td><%= link_to @profile.website, @profile.website %></td>
+            </tr>
+            
+        </table>
+<%= link_to 'Edit profile', edit_profile_path(current_user.profile), class: "btn btn-codaisseur pull-right" %>
         </div>
-
     </div>
 </div>

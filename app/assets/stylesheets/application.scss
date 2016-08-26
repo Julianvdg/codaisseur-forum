@@ -413,3 +413,11 @@ td.image-col-width {
 .content-wrapper textarea {
     resize: none;
 }
+
+.table-profile td{
+    min-width: 150px;
+}
+
+.table-profile tr:first-child td {
+    vertical-align: middle;
+}
