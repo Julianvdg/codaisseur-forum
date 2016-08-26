@@ -3,8 +3,16 @@
 
 <div class="user-controls controls-wrapper">
     <div class="row">
-    <div class="col-sm-4 col-xs-6">
-      <div class="input-group">
+    <div class="col-sm-4 col-xs-8">
+      <%= link_to 'New Question', new_question_path, class: "btn btn-codaisseur" %>
+    </div>
+    <div class="col-sm-4 col-xs-8">
+      <form class="filter_form">
+        <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title', params[:topic]), include_blank: true, onchange: "this.form.submit();" %>
+      </form>
+    </div>
+    <div class="col-sm-8 col-xs-8">
+      <div class="input-group pull-right">
         <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
 
         <div class="input-group">
@@ -62,4 +70,3 @@
        <div class= "text-center margin-top"><%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
       </div>
 </div>
-

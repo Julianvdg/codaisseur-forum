@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
         @users = User.where(id: users.map(&:id)).paginate(:page =>params[:page], :per_page => 5)
       end
     else
-      @users = User.order("#{sort_column} #{sort_direction}").paginate(:page =>params[:page], :per_page => 5)
+      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved)).paginate(:page =>params[:page], :per_page => 5)
     end
   end
 
@@ -40,7 +40,6 @@ class ProfilesController < ApplicationController
   end
 
   def new
-
     @profile = Profile.new
     @user = current_user
     redirect_to root_path if !@user.profile.nil?
@@ -60,7 +59,7 @@ class ProfilesController < ApplicationController
     @user = @profile.user
     authorize! :edit, @profile
   end
-    
+
   def edit_role
       user = User.find(params[:id])
       user.role = params[:role]
