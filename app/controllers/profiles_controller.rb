@@ -3,6 +3,7 @@ class ProfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
+    
     authorize! :read, @users
 
     if params[:search]
@@ -19,6 +20,7 @@ class ProfilesController < ApplicationController
     else
       @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved)).paginate(:page =>params[:page], :per_page => 5)
     end
+
   end
 
   def show
@@ -54,7 +56,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-
     @profile = Profile.find(params[:id])
     @user = @profile.user
     authorize! :edit, @profile
@@ -91,7 +92,6 @@ class ProfilesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
 
   def profile_params
     params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|

@@ -4,19 +4,11 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 
 <div class="user-controls controls-wrapper">
   <div class="row">
-    <div class="col-sm-4 col-xs-8">
-    </div>
-      <div class="col-sm-8 col-xs-8">
-        <div class="input-group pull-right">
+    <div class="col-sm-4 col-xs-4">
+             
+             <div class="input-group">
+
           <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
-          <div class="filters">
-            <form class="filter_form">
-              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
-            </form>
-            <form class="filter_form">
-              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
-            </form>
-          </div>
           <div class="input-group">
             <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
             <span class="input-group-btn">
@@ -27,6 +19,21 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
           </div>
           <% end %>
         </div>
+              
+    </div>
+         <div class="col-sm-3 col-xs-3">
+      </div>
+     <div class="col-sm-3 col-xs-3">
+     <form class="filter_form">
+              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), prompt: 'Select approved status', onchange: "this.form.submit();", class: "form-control" %>
+            </form>
+    </div>
+      <div class="col-sm-2 col-xs-2">
+        <div class="filters">
+            <form class="filter_form">
+              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), prompt: 'Select role', onchange: "this.form.submit();", class: "form-control" %>
+            </form>
+          </div>
       </div>
     </div>
     <div class="row sorting-links">
@@ -46,12 +53,8 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
       <% @users.where(:disabled => false).each do |user| %>
         <tr>
           <% if !user.profile.nil? %>
-            <% if user.is_teacher? || user.is_admin? %>
-              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %></td>
-            <% else %>
-              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %></td>
-            <% end %>
-            <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
+            <td><%= render partial: "layouts/avatar", locals: { user: user } %></td>
+            <td><%= link_to user.profile.full_name, { controller: :profiles, action: :show, id: user.profile.id }, { class: "codaisseur-link" } %></td>
             <td><%= user.email %></td>
             <td>
               <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
@@ -98,7 +101,10 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <% else %>
     <p>There are no profiles containing the term(s) <%= params[:search] %>.</p>
   <% end %>
-  <div class="text-center">
+  <div class= "text-center margin-top">
+  <% if !@users.nil? %>
     <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
-  </div>
+  <% end %>
 </div>
+</div>
+

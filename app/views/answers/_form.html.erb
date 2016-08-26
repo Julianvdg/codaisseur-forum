@@ -1,6 +1,6 @@
 <div>
 <table class="table">
-    <td class="image-col-width"><%= link_to image_tag(current_user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: current_user.profile.id %></td>
+    <td class="image-col-width"><%= render partial: "layouts/avatar", locals: { user: current_user } %></td>
     <td>
       <%= form_for([@question, @question.answers.new], class: 'form-group', remote: true) do |f| %>
         <%= f.hidden_field :question_id %>

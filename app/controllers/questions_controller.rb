@@ -13,6 +13,9 @@ helper_method :sort_column, :sort_direction
     else
       @questions = Question.order("#{sort_column} #{sort_direction}").filter(params.slice(:topic)).paginate(:page =>params[:page], :per_page => 5)
     end
+        
+      @random = Question.includes(:answers).where( :answers => { :question_id => nil } ).sample(1)
+
   end
 
   def show
@@ -30,7 +33,7 @@ helper_method :sort_column, :sort_direction
 
  def update
     @question = Question.find(params[:question_id])
-    authorize! :update, @question
+  
      if @question.update(params.permit(:body, :title, :topic_id, :user_id))
        render json: @question
      else
@@ -41,7 +44,7 @@ helper_method :sort_column, :sort_direction
  def destroy
 
     @question = Question.find(params[:id])
-    authorize! :destroy, @question
+
     @question.destroy
     flash.notice = "Question '#{@question.title}' Deleted!"
     redirect_to questions_path

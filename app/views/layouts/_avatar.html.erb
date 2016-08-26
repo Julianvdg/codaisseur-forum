@@ -1,16 +1,16 @@
 <% size ||= 'small' %>
 <% if size == 'big' %>
- <% if user.is_teacher? || user.is_admin? %>
-   <span class="avatar-big avatar-teacher">
- <% else %>
-   <span class="avatar-big">
- <% end %>
+  <% if user.is_teacher? || user.is_admin? %>
+    <span class="avatar-big avatar-teacher">
+  <% else %>
+    <span class="avatar-big">
+  <% end %>
 <% else %>
- <% if user.is_teacher? || user.is_admin? %>
-   <span class="avatar avatar-teacher">
- <% else %>
-   <span class="avatar">
- <% end %>
+  <% if user.is_teacher? || user.is_admin? %>
+    <span class="avatar avatar-teacher">
+  <% else %>
+    <span class="avatar">
+  <% end %>
 <% end %>
- <%= link_to image_tag(user.profile.avatar), controller: :profiles, action: :show, id: user.profile.id %>
+  <%= link_to image_tag(user.profile.avatar), controller: :profiles, action: :show, id: user.profile.id %>
 </span>
