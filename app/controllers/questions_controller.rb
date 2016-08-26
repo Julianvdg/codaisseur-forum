@@ -13,6 +13,9 @@ helper_method :sort_column, :sort_direction
     else
       @questions = Question.order("#{sort_column} #{sort_direction}").filter(params.slice(:topic)).paginate(:page =>params[:page], :per_page => 5)
     end
+        
+      @random = Question.includes(:answers).where( :answers => { :question_id => nil } ).sample(1)
+
   end
 
   def show
