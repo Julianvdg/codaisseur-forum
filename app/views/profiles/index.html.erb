@@ -11,10 +11,10 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
             <div class="filters">
               <form class="filter_form">
-                <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin']), prompt: "", onchange: "this.form.submit();" %>
+                <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
               </form>
               <form class="filter_form">
-                <%= select_tag 'approved', options_for_select([true, false]), prompt: "", onchange: "this.form.submit();" %>
+                <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
               </form>
             </div>
             <div class="input-group">
