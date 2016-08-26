@@ -224,7 +224,7 @@ ul.nav a:hover {
 
 .controls-wrapper {
     background-color: #E4E4E4;
-    padding: 40px 50px 0px 50px;
+    padding: 20px 50px 0px 50px;
     border-radius: 5px 5px 0px 0px;
     margin-top: 50px;
     -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.40);
@@ -399,19 +399,31 @@ td.image-col-width {
 
 /* Questions index */
 
-.table-wrapper {
+.questions-wrapper {
     margin-bottom: 60px;
 }
 
-.table-wrapper a {
+.questions-wrapper a {
     color:#000;
     font-weight: 700;
 }
 
-.table-wrapper a:hover {
+.questions-wrapper a:hover {
     color:#c1272d;
     font-weight: 700;
     text-decoration: none;
+}
+
+.questions-wrapper {
+     background-color: #fff;
+    border-radius: 0px 0px 5px 5px;
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+    -moz-box-shadow:    0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+    box-shadow:         0px 2px 5px 0px rgba(50, 50, 50, 0.40);
+}
+
+.questions-wrapper tr td {
+    padding: 20px 20px 20px 30px!important;
 }
 
 .content-wrapper textarea {
@@ -425,7 +437,6 @@ td.image-col-width {
 .table-profile tr:first-child td {
     vertical-align: middle;
 }
-
 
 .questions-inputs input#search {
     background-color: #fff;
@@ -446,4 +457,9 @@ td.image-col-width {
 .questions-inputs .input-group-addon:first-child {
     background-color: #fff;
     color: #B2BBBD;
+}
+
+.random-question {
+    background-color: #E4E4E4;
+    border-top:solid 1px #fff;
 }
