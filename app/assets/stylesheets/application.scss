@@ -32,7 +32,7 @@ body {
 
 }
 
-h2, h3 {
+h2, h3, h4 {
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
 }
@@ -333,11 +333,37 @@ td.image-col-width {
 .table-question {
   vertical-align: middle;
 }
-.question-time-ago {
 
+.question-title {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+}
+.question-time-ago {
+  color: #4F5962;
+  font-weight: 700;
+  font-size: 13px;
+}
+.question-time-ago a {
+  text-decoration: none;
+  color: #4F5962;
+  font-weight: 700;
+}
+.topic-show-btn {
+  margin: 15px 0 20px 0;
 }
 .answer-time-ago {
-  font-size: 12px;
+  font-size: 13px;
+  color: #4F5962;
+}
+.answer-time-ago a {
+  text-decoration: none;
+  color: #4F5962;
+  font-weight: bolder;
+}
+
+.by-not-bold{
+  font-weight: 100;
 }
 .padding-link{
   padding-top: 20px;
@@ -346,13 +372,66 @@ td.image-col-width {
 
 .link-back {
   color: #a9a9a9;
-  margin-bottom: 50px;
+  padding-top: 20px;
+  margin-bottom: 5px;
 }
+
 .link-back:hover {
   text-decoration: none;
   color: #c1272d;
 }
 
+
+.question-show .glyphicon-wrapper {
+  margin-top: 20px;
+
+  .glyphicon {
+    font-size: 17px;
+  }
+  .glyphicon-trash {
+    color: #a9a9a9;
+    padding-right: 7px;
+  }
+  .glyphicon-wrench {
+    color: #c1272d;
+    cursor: pointer;
+  }
+}
+
+.td-answers .glyphicon-wrapper {
+  margin-top: 20px;
+
+  .glyphicon {
+    font-size: 15px;
+  }
+  .glyphicon-trash {
+    color: #a9a9a9;
+    padding-right: 7px;
+  }
+  .glyphicon-wrench {
+    color: #c1272d;
+    cursor: pointer;
+  }
+}
+
+.question-body {
+  font-family: roboto;
+  font-size: 14px;
+
+}
+.save-edit-question {
+  margin-top: 15px;
+}
+
+.save-edit-answer {
+  margin-top: 15px;
+}
+//
+// .answers-count {
+//   font-family: Poppins;
+//   font-size: 15px;
+//   font-weight: bold;
+// }
 .answer-content {
   position:relative;
 }
@@ -373,6 +452,14 @@ td.image-col-width {
 
 .btn-submit-wrapper {
   text-align: right;
+}
+
+.tr-answers{
+  margin-top: 50px;
+}
+
+.border-top-answers  {
+  border-top: 1px solid #ddd;
 }
 
 .pagination {

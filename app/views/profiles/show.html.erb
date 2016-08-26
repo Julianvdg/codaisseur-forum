@@ -1,24 +1,23 @@
 
 
 <div class="padding-top-md">
-    <div class="row">
-        <div class="col-sm-4 col-sm-push-8">
-            <h4>Your Account</h4>
-            <p>Minim tousled iPhone master cleanse
-            normcore bespoke. Aute magna truffaut
+  <div class="row">
+    <div class="col-sm-4 col-sm-push-8">
+      <h4>Your Account</h4>
+      <p>Minim tousled iPhone master cleanse normcore bespoke. Aute magna truffaut
             exercitation mustache gentrify migas cray,
             tacos pabst mumblecore deserunt. </p>
         </div>
-        
-        
-        
+
+
+
         <div class="col-sm-8 col-sm-pull-4 content-wrapper">
-        
+
         <table class="table table-profile">
-            <tr>  
+            <tr>
                 <td>Your photo</td>
                 <td><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+                    <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
                          <% else %>
                         <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
                       <% end %></td>
@@ -47,7 +46,7 @@
                 <td>Website URL</td>
                 <td><%= link_to @profile.website, @profile.website %></td>
             </tr>
-            
+
         </table>
 <%= link_to 'Edit profile', edit_profile_path(current_user.profile), class: "btn btn-codaisseur pull-right" %>
         </div>
