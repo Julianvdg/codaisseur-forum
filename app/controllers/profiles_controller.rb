@@ -10,17 +10,16 @@ class ProfilesController < ApplicationController
     if params[:search]
       profiles = Profile.search(params[:search]).order(created_at: :desc)
 
-
       if profiles.any?
         users = []
         profiles.each do |profile|
           user = profile.user
           users << user
         end
-        @users = User.where(id: users.map(&:id))
+        @users = User.where(id: users.map(&:id)).paginate(:page =>params[:page], :per_page => 5)
       end
     else
-      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved))
+      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved)).paginate(:page =>params[:page], :per_page => 5)
     end
 
   end
