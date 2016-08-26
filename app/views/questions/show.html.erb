@@ -66,11 +66,12 @@
 
         <td class="td-answers">
 
-              <p class="answer-time-ago">
+            <p class="answer-time-ago">
                 <%= link_to answer.user.profile.full_name, controller: :profiles, action: :show, id: answer.user.profile.id %>&nbsp; <%= time_ago_in_words(answer.created_at) %> ago
-              </p>
+            </p>
 
-            <div id="answer-<%= answer.id %>" class="answer-content"><%= answer.body %></div>
+           
+            <div id="answer-<%= answer.id %>" class="answer-content"><%= markdown(answer.body) %></div>
 
             <div id="form-<%= answer.id %>" class="edit-answer-form">
               <textarea class='form-control edit-body' name="name" rows="6">
