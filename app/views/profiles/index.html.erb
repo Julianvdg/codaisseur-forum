@@ -47,7 +47,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
         <tr>
           <% if !user.profile.nil? %>
             <td><%= render partial: "layouts/avatar", locals: { user: user } %></td>
-            <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
+            <td><%= link_to user.profile.full_name, { controller: :profiles, action: :show, id: user.profile.id }, { class: "codaisseur-link" } %></td>
             <td><%= user.email %></td>
             <td>
               <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
