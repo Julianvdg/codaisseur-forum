@@ -4,18 +4,10 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 
 <div class="user-controls controls-wrapper">
   <div class="row">
-    <div class="col-sm-4 col-xs-8">
-    </div>
-      <div class="col-sm-8 col-xs-8">
-        <div class="input-group pull-right">
-          <div class="filters">
-            <form class="filter_form">
-              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), prompt: 'Select role', onchange: "this.form.submit();", class: "form-control" %>
-            </form>
-            <form class="filter_form">
-              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), prompt: 'Select approved status', onchange: "this.form.submit();", class: "form-control" %>
-            </form>
-          </div>
+    <div class="col-sm-4 col-xs-4">
+             
+             <div class="input-group">
+
           <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
           <div class="input-group">
             <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
@@ -27,6 +19,21 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
           </div>
           <% end %>
         </div>
+              
+    </div>
+         <div class="col-sm-3 col-xs-3">
+      </div>
+     <div class="col-sm-3 col-xs-3">
+     <form class="filter_form">
+              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), prompt: 'Select approved status', onchange: "this.form.submit();", class: "form-control" %>
+            </form>
+    </div>
+      <div class="col-sm-2 col-xs-2">
+        <div class="filters">
+            <form class="filter_form">
+              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), prompt: 'Select role', onchange: "this.form.submit();", class: "form-control" %>
+            </form>
+          </div>
       </div>
     </div>
     <div class="row sorting-links">
@@ -94,9 +101,10 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <% else %>
     <p>There are no profiles containing the term(s) <%= params[:search] %>.</p>
   <% end %>
-</div>
-<div class= "text-center margin-top">
+  <div class= "text-center margin-top">
   <% if !@users.nil? %>
     <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   <% end %>
 </div>
+</div>
+
