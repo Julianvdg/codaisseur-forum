@@ -46,11 +46,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
       <% @users.where(:disabled => false).each do |user| %>
         <tr>
           <% if !user.profile.nil? %>
-            <% if user.is_teacher? || user.is_admin? %>
-              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %></td>
-            <% else %>
-              <td><%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %></td>
-            <% end %>
+            <td><%= render partial: "layouts/avatar", locals: { user: user } %></td>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
             <td>

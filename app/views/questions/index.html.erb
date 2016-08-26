@@ -15,7 +15,6 @@
             </span>
             <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control"%>
         </div>
-        
         <% end %>
         <% if @questions.present? %>
           <% render "form" %>
@@ -30,38 +29,29 @@
         <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title'), prompt: "", onchange: "this.form.submit();", class: "form-control" %>
       </form>
     </div>
-    
     <div class="col-sm-2 col-xs-12">
             <%= link_to 'New Question', new_question_path, class: "btn btn-codaisseur" %>
     </div>
+  </div>
+  <div class="row sorting-links">
+    <div class="col-md-12">
+      <ul class="list-inline">
+        <li><%= sort_link "Popular" %></li>
+        <li class="active"><%= sort_link "created_at", "New"  %></li>
+      </ul>
     </div>
-    
-    <div class="row sorting-links">
-        <div class="col-md-12">
-            <ul class="list-inline">
-               <li class="active"><%= sort_link "created_at", "New"  %></li>
-                <li><%= sort_link "title" %></li>
-            </ul>
-        </div>
-    </div>
+  </div>
 </div>
-
 <div class="table-wrapper">
   <table class="table table-hover table-users">
     <tbody>
-    <% @questions.each do |question| %>
-            <tr>
-            <% if question.user.is_teacher? || question.user.is_admin? %>
-
-              <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
-            <% else %>
-              <td><%= link_to image_tag(question.user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: question.user.profile.id %></td>
-            <% end %>
-            <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p class="btn btn-topic"><%= question.topic.title %></p></td>
-
-            <td class="text-center"><h3><%= question.answers.count %></h3><p>Answers</p>
-            </td>
-              </tr>
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= render partial: "layouts/avatar", locals: { user: question.user } %></td>
+          <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p class="btn btn-topic"><%= question.topic.title %></p></td>
+          <td class="text-center"><h3><%= question.answers.count %></h3><p>Answers</p>
+        </td>
+        </tr>
       <% end %>
     </tbody>
   </table>
