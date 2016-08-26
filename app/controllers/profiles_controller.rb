@@ -60,21 +60,22 @@ class ProfilesController < ApplicationController
     authorize! :edit, @profile
   end
 
-  def edit_role
-      user = User.find(params[:id])
-      user.role = params[:role]
-      user.save
-      redirect_to profiles_path
-  end
-
   def update
     @profile = Profile.find(params[:id])
 
     if @profile.update_attributes(profile_params)
       authorize! :update, @profile
+      redirect_to @profile
     else
       render 'edit'
     end
+  end
+
+  def edit_role
+      user = User.find(params[:id])
+      user.role = params[:role]
+      user.save
+      redirect_to profiles_path
   end
 
   private

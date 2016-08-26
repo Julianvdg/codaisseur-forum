@@ -3,31 +3,31 @@
 mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
 
 <div class="user-controls controls-wrapper">
-    <div class="row">
+  <div class="row">
     <div class="col-sm-4 col-xs-8">
-        </div>
-        <div class="col-sm-8 col-xs-8">
-          <div class="input-group pull-right">
-            <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
-            <div class="filters">
-              <form class="filter_form">
-                <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
-              </form>
-              <form class="filter_form">
-                <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
-              </form>
-            </div>
-            <div class="input-group">
-                <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
-               <span class="input-group-btn">
-                 <%= button_tag( :class => "btn btn-codaisseur") do %>
-                    <span class='glyphicon glyphicon-search'></span>
-                 <% end %>
-               </span>
-            </div>
-            <% end %>
-          </div>
     </div>
+      <div class="col-sm-8 col-xs-8">
+        <div class="input-group pull-right">
+          <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
+          <div class="filters">
+            <form class="filter_form">
+              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
+            </form>
+            <form class="filter_form">
+              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
+            </form>
+          </div>
+          <div class="input-group">
+            <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
+            <span class="input-group-btn">
+              <%= button_tag( :class => "btn btn-codaisseur") do %>
+                <span class='glyphicon glyphicon-search'></span>
+              <% end %>
+            </span>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
     <div class="row sorting-links">
         <div class="col-md-4">
@@ -54,35 +54,25 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
             <td>
-
-            <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
-
-            <% select_list = [ 'student', 'teacher', 'admin' ] %>
-
-
-            <%= select_tag :role, options_for_select([['Student', 'student'] , ['Teacher', 'teacher'] ,['Admin', 'admin']], user.role) %>
-
-
-            <%= submit_tag("Update role") %>
-
-            <% end %>
-
-
+              <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
+                <% select_list = [ 'student', 'teacher', 'admin' ] %>
+                <%= select_tag :role, options_for_select([['Student', 'student'] , ['Teacher', 'teacher'] ,['Admin', 'admin']], user.role) %>
+                <%= submit_tag("Update role") %>
+              <% end %>
             </td>
             <td><%= user.role %></td>
-            <% if !user.is_admin? %>
-            <td class="text-right"><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %>
-
-            <%= link_to "", edit_profile_path(user.profile.id), class: "glyphicon glyphicon-wrench"  %>
-
-            </td>
-            <% else %>
-            <td></td>
-            <% end %>
+              <% if !user.is_admin? %>
+                <td class="text-right">
+                  <%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %>
+                  <%= link_to "", edit_profile_path(user.profile.id), class: "glyphicon glyphicon-wrench"  %>
+                </td>
+              <% else %>
+                <td></td>
+              <% end %>
             <% if user.approved != true %>
-            <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
+              <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
             <% else %>
-            <td></td>
+              <td></td>
             <% end %>
             <td class="text-right">
           <% else %>
@@ -91,17 +81,15 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <td><%= user.email %></td>
             <td><%= user.role %></td>
             <% if !user.is_admin? %>
-            <td class="text-right"><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %>
-            </td>
+              <td class="text-right"><%= link_to "", disable_user_path(user.id), class: "glyphicon glyphicon-trash", data: {confirm: 'Are you sure you want to disable this user?'}  %></td>
             <% else %>
-            <td></td>
+              <td></td>
             <% end %>
             <% if user.approved != true %>
-            <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
+              <td><%= link_to "Accept user", approve_user_path(user.id), class: "btn btn-success"  %></td>
             <% else %>
-            <td></td>
+              <td></td>
             <% end %>
-
           <% end %>
         </tr>
       <% end %>
@@ -111,10 +99,6 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     <p>There are no profiles containing the term(s) <%= params[:search] %>.</p>
   <% end %>
   <div class="text-center">
-  <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </div>
-
-
-
-
 </div>
