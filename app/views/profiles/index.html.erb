@@ -10,10 +10,10 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
         <div class="input-group pull-right">
           <div class="filters">
             <form class="filter_form">
-              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
+              <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), prompt: 'Select role', onchange: "this.form.submit();", class: "form-control" %>
             </form>
             <form class="filter_form">
-              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
+              <%= select_tag 'approved', options_for_select([true, false], params[:approved]), prompt: 'Select approved status', onchange: "this.form.submit();", class: "form-control" %>
             </form>
           </div>
           <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
@@ -26,7 +26,6 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             </span>
           </div>
           <% end %>
-
         </div>
       </div>
     </div>
