@@ -426,12 +426,7 @@ td.image-col-width {
 .save-edit-answer {
   margin-top: 15px;
 }
-//
-// .answers-count {
-//   font-family: Poppins;
-//   font-size: 15px;
-//   font-weight: bold;
-// }
+
 .answer-content {
   position:relative;
 }
@@ -454,8 +449,16 @@ td.image-col-width {
   text-align: right;
 }
 
-.tr-answers{
+.td-answers{
   margin-top: 50px;
+  position: relative;
+
+}
+
+.td-answers .glyphicon-wrapper {
+  position: absolute;
+  right: 5px;
+  top: 5px;
 }
 
 .border-top-answers  {
