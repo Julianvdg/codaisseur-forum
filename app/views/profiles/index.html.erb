@@ -95,5 +95,9 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <% else %>
     <p>There are no profiles containing the term(s) <%= params[:search] %>.</p>
   <% end %>
-  
+</div>
+<div class= "text-center margin-top">
+  <% if !@users.nil? %>
+    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
+  <% end %>
 </div>
