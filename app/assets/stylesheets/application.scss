@@ -414,7 +414,7 @@ td.image-col-width {
 
 
 .question-body {
-  font-family: roboto;
+  font-family: 'Roboto';
   font-size: 14px;
 
 }
@@ -557,4 +557,15 @@ td.image-col-width {
 .codaisseur-link:hover {
     color: #c1272d;
     text-decoration: none;
+}
+
+.markdown-link {
+  color: #a9a9a9;
+}
+.markdown-link a{
+  color: #a9a9a9;
+}
+
+.content-wrapper {
+  margin-bottom: 60px;
 }
