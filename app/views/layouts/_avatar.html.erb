@@ -1,0 +1,7 @@
+<span class="avatar-wrapper">
+  <% if user.is_teacher? || user.is_admin? %>
+    <%= link_to image_tag(user.profile.avatar, class: 'avatar avatar-teacher'), controller: :profiles, action: :show, id: user.profile.id %>
+  <% else %>
+    <%= link_to image_tag(user.profile.avatar, class: 'avatar'), controller: :profiles, action: :show, id: user.profile.id %>
+  <% end %>
+</span>
