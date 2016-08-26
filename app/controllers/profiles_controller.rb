@@ -56,7 +56,6 @@ class ProfilesController < ApplicationController
   end
 
   def edit
-
     @profile = Profile.find(params[:id])
     @user = @profile.user
     authorize! :edit, @profile
@@ -93,7 +92,6 @@ class ProfilesController < ApplicationController
   def sort_direction
     %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
-
 
   def profile_params
     params.require(:profile).permit(:avatar, :first_name, :last_name, :course_id, :bio, :github, :twitter, :website).tap do |person_params|
