@@ -12,13 +12,7 @@
       <table class="table table-profile">
         <tr>
           <td>Your photo</td>
-          <td>
-            <% if @profile.user.is_teacher? || @profile.user.is_admin? %>
-              <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
-            <% else %>
-              <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
-            <% end %>
-          </td>
+          <td><%= render partial: "layouts/avatar", locals: { user: @profile.user, size: 'big' } %></td>
         </tr>
         <tr>
           <td>First name</td>
