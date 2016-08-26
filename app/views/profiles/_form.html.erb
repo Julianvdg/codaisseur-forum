@@ -1,46 +1,66 @@
+<div class="padding-top-md">
+    <div class="row">
+        <div class="col-sm-4 col-sm-push-8">
+            <h4>Your Account</h4>
+            <p>Minim tousled iPhone master cleanse
+            normcore bespoke. Aute magna truffaut
+            exercitation mustache gentrify migas cray,
+            tacos pabst mumblecore deserunt. </p>
+        </div>
+        
+        
+        
+        <div class="col-sm-8 col-sm-pull-4 content-wrapper">
 <%= form_for @profile do |f| %>
-<table class="table table-wrapper">
-  <tbody>
-    <tr>
-      <td><%= f.label :avatar %></td>
-      <td><%= f.file_field :avatar %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :first_name %></td>
-      <td><%= f.text_field :first_name, required: true %></td>
-    </tr>
-    <tr>
-      <td><%= f.label :last_name %></td>
-      <td><%= f.text_field :last_name, required: true %></td>
-    </tr>
-    <% if @user.is_student? %>
-      <tr>
-        <td><%= f.label :course %></td>
-        <td><%= f.collection_select :course_id, Course.all, :id, :name, { include_blank: true } %></td>
-      </tr>
-    <% end %>
-    <tr>
-      <td><%= f.label 'About you' %></td>
-      <td><%= f.text_area :bio, size: '40x5' %></td>
-    </tr>
-    <tr>
-      <td><%= f.label 'Github username' %></td>
-      <td><%= f.text_field :github %></td>
-    </tr>
-    <tr>
-      <td><%= f.label 'Twitter username' %></td>
-      <td><%= f.text_field :twitter %></td>
-    </tr>
-    <tr>
-      <td><%= f.label 'Website URL' %></td>
-      <td><%= f.text_field :website %></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="actions btn-submit-wrapper">
-        <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<% end %>
+       <table class="table table-profile">
+          <tbody>
+            <tr>
+              <td><% if @profile.user.is_teacher? || @profile.user.is_admin? %>
+                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big avatar-teacher') %>
+                         <% else %>
+                        <%= image_tag(@profile.avatar, class: 'avatar avatar-big') %>
+                      <% end %></td>
+              <td><%= f.file_field :avatar %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :first_name %></td>
+              <td><%= f.text_field :first_name, required: true, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :last_name %></td>
+              <td><%= f.text_field :last_name, required: true, class: "form-control" %></td>
+            </tr>
+            <% if @user.is_student? %>
+              <tr>
+                <td><%= f.label :course %></td>
+                <td><%= f.collection_select :course_id, Course.all, :id, :name, { include_blank: true }, class: "form-control" %></td>
+              </tr>
+            <% end %>
+            <tr>
+              <td><%= f.label 'About you' %></td>
+              <td><%= f.text_area :bio, size: '30x5', class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Github username' %></td>
+              <td><%= f.text_field :github, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Twitter username' %></td>
+              <td><%= f.text_field :twitter, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td><%= f.label 'Website URL' %></td>
+              <td><%= f.text_field :website, class: "form-control" %></td>
+            </tr>
+            <tr>
+              <td colspan="2" class="actions btn-submit-wrapper">
+               <%= link_to "Cancel", @profile, class: "btn btn-default" %>
+                <%= f.submit (@profile.new_record? ? "Create" : "Update"), class: "btn btn-codaisseur" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+ <% end %>       
+        </div>
+    </div>
+</div>

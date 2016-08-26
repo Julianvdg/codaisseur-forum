@@ -1,4 +1,5 @@
 <!-- <div class="padding-link"> -->
+<div>
 <%= link_to 'Back to Overview', root_path, class: 'link-back'  %>
 </div>
 
@@ -15,18 +16,20 @@
         <p class="question-time-ago"><b>created <%= time_ago_in_words(@question.created_at) %> ago by <%= link_to @question.user.profile.full_name, controller: :profiles, action: :show, id: @question.user.profile.id %></b></p>
         <div id="question-<%= @question.id %>" class="question-body"><%= markdown(@question.body) %></div>
         <% if @question.user_id == current_user.id || current_user.is_admin?%>
-        <div class="buttons">
-          <button id="<%= @question.id %>" class="btn btn-codaisseur btn-xs edit-btn-question">Edit</button>
-        </div>
+
 
         <div id="form-<%= @question.id %>" class="edit-question-form">
           <textarea class='form-control edit-body' name="name" rows="6"><%= @question.body %></textarea>
-          <button question_id="<%= @question.id %>" question_id="<%= @question.id %>" class="btn-codaisseur btn pull-right save-edit-question">Save edit</button>
         </div>
-
+        </td>
+        <td>
+            <div class="buttons">
+            <i id="<%= @question.id %>" class=" glyphicon glyphicon-wrench edit-btn-question"></i>
+        </div>
+        
         <div class="buttons">
-          <button id="<%= @question.id %>" class="btn btn-codaisseur btn-xs"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
-          </button>
+          <i id="<%= @question.id %>" class="glyphicon glyphicon-trash"><%= link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </i>
         </div>
 
         <%end%>
