@@ -15,7 +15,12 @@
        <table class="table table-profile">
           <tbody>
             <tr>
-              <td><%= render partial: "layouts/avatar", locals: { user: @profile.user, size: 'big' } %></td>
+              <% if @profile.user.present? %>
+                  <% @user = @profile.user %>
+              <% else %>
+                  <% @user = current_user %>
+              <% end %>
+              <td><%= render partial: "layouts/avatar", locals: { user: @user, size: 'big' } %></td>
               <td><%= f.file_field :avatar %></td>
             </tr>
             <tr>
