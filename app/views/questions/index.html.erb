@@ -1,23 +1,21 @@
 <h3 class= "margin-top-md">Welcome to the codaisseur forum</h3>
 <p>There is no such thing as a stupid question, only stupid people.</p>
 
-<div class="user-controls controls-wrapper">
+<div class="user-controls controls-wrapper questions-inputs">
     <div class="row">
-    <div class="col-sm-4 col-xs-8">
-      <%= link_to 'New Question', new_question_path, class: "btn btn-codaisseur" %>
-    </div>
-    <div class="col-sm-4 col-xs-8">
-      <form class="filter_form">
-        <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title', params[:topic]), include_blank: true, onchange: "this.form.submit();" %>
-      </form>
-    </div>
-    <div class="col-sm-8 col-xs-8">
-      <div class="input-group pull-right">
-        <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
 
+
+    <div class="col-sm-5 col-xs-8">
+      <div class="input-group">
+        <%= form_tag(questions_path, :method => "get", id: "search-form") do %>
+        
         <div class="input-group">
-            <%= text_field_tag :search, params[:search], placeholder: "Search Questions", class: "form-control"%>
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-search"></i>
+            </span>
+            <%= text_field_tag :search, params[:search], placeholder: "Search...", class: "form-control"%>
         </div>
+        
         <% end %>
         <% if @questions.present? %>
           <% render "form" %>
@@ -27,7 +25,7 @@
       </div>
     </div>
     
-    <div class="col-sm-3 col-sm-offset-3 col-xs-6">
+    <div class="col-sm-3 col-sm-offset-2 col-xs-4">
       <form class="filter_form">
         <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title'), prompt: "", onchange: "this.form.submit();", class: "form-control" %>
       </form>
@@ -41,8 +39,8 @@
     <div class="row sorting-links">
         <div class="col-md-12">
             <ul class="list-inline">
-                <li><%= sort_link "Popular" %></li>
-                <li class="active"><%= sort_link "created_at", "New"  %></li>
+               <li class="active"><%= sort_link "created_at", "New"  %></li>
+                <li><%= sort_link "title" %></li>
             </ul>
         </div>
     </div>
