@@ -26,7 +26,7 @@
 
     <div class="col-sm-3 col-sm-offset-2 col-xs-4">
       <form class="filter_form">
-        <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title'), prompt: "Select by topic", onchange: "this.form.submit();", class: "form-control" %>
+        <%= select_tag 'topic', options_from_collection_for_select(Topic.all, 'id', 'title', params[:topic]), prompt: 'Select by topic', onchange: "this.form.submit();", class: "form-control" %>
       </form>
     </div>
     <div class="col-sm-2 col-xs-12">
@@ -45,7 +45,7 @@
 <div class="questions-wrapper">
   <table class="table table-hover table-users">
     <tbody>
-     
+
          <% @random.each do |random| %>
          <tr class="random-question">
          <td style="text-align:right"> <%= render partial: "layouts/avatar", locals: { user: random.user } %></td>
@@ -53,7 +53,7 @@
          <td class="text-center"><h3><%= random.answers.count %></h3><p>Answers</p>
          </tr>
          <% end %>
-     
+
       <% @questions.each do |question| %>
         <tr>
           <td style="text-align:right"><%= render partial: "layouts/avatar", locals: { user: question.user } %></td>
