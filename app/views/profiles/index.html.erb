@@ -8,7 +8,6 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
     </div>
       <div class="col-sm-8 col-xs-8">
         <div class="input-group pull-right">
-          <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
           <div class="filters">
             <form class="filter_form">
               <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
@@ -17,6 +16,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
               <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
             </form>
           </div>
+          <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
           <div class="input-group">
             <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
             <span class="input-group-btn">
@@ -26,6 +26,7 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             </span>
           </div>
           <% end %>
+
         </div>
       </div>
     </div>
@@ -94,7 +95,5 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <% else %>
     <p>There are no profiles containing the term(s) <%= params[:search] %>.</p>
   <% end %>
-  <div class="text-center">
-    <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
-  </div>
+  
 </div>
