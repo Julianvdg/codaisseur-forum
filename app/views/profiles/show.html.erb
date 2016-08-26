@@ -28,15 +28,15 @@
         </tr>
         <tr>
           <td>Github Profile</td>
-          <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github if !@profile.github.nil? %></td>
+          <td><%= link_to @profile.github, 'http://www.github.com/' + @profile.github, class: 'codaisseur-link' if !@profile.github.nil? %></td>
         </tr>
         <tr>
           <td>Twitter Username</td>
-          <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter if !@profile.twitter.nil? %></td>
+          <td><%= link_to @profile.twitter, 'http://www.twitter.com/' + @profile.twitter, class: 'codaisseur-link' if !@profile.twitter.nil? %></td>
         </tr>
         <tr>
           <td>Website URL</td>
-          <td><%= link_to @profile.website, @profile.website if !@profile.website.nil? %></td>
+          <td><%= link_to @profile.website, @profile.website, class: 'codaisseur-link' if !@profile.website.nil? %></td>
         </tr>
         <tr>
           <td colspan="2">
