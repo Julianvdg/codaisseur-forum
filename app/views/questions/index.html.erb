@@ -49,7 +49,7 @@
          <% @random.each do |random| %>
          <tr class="random-question">
          <td style="text-align:right"> <%= render partial: "layouts/avatar", locals: { user: random.user } %></td>
-        <td><h4><%= link_to random.title, random %></h4><p> created <%= time_ago_in_words(random.created_at) %> ago by <%= link_to random.user.profile.full_name, controller: :profiles, action: :show, id: random.user.profile.id %></p><p class="btn btn-topic"><%= random.topic.title %></p></td>
+        <td><h4><%= link_to random.title, random %></h4><p><%= time_ago_in_words(random.created_at).capitalize %> ago by <%= link_to random.user.profile.full_name, controller: :profiles, action: :show, id: random.user.profile.id %></p><p class="btn btn-topic"><%= random.topic.title %></p></td>
          <td class="text-center"><h3><%= random.answers.count %></h3><p>Answers</p>
          </tr>
          <% end %>
@@ -57,7 +57,7 @@
       <% @questions.each do |question| %>
         <tr>
           <td style="text-align:right"><%= render partial: "layouts/avatar", locals: { user: question.user } %></td>
-          <td><h4><%= link_to question.title, question %></h4><p> created <%= time_ago_in_words(question.created_at) %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p class="btn btn-topic"><%= question.topic.title %></p></td>
+          <td><h4><%= link_to question.title, question %></h4><p><%= time_ago_in_words(question.created_at).capitalize %> ago by <%= link_to question.user.profile.full_name, controller: :profiles, action: :show, id: question.user.profile.id %></p><p class="btn btn-topic"><%= question.topic.title %></p></td>
           <td class="text-center"><h3>
             <%= question.answers.count %></h3><p>Answers</p>
           </td>
