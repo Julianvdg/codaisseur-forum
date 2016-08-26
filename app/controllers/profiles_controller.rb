@@ -3,12 +3,13 @@ class ProfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    
+
 
     authorize! :read, @users
 
     if params[:search]
       profiles = Profile.search(params[:search]).order(created_at: :desc)
+
 
       if profiles.any?
         users = []
@@ -16,10 +17,10 @@ class ProfilesController < ApplicationController
           user = profile.user
           users << user
         end
-        @users = User.where(id: users.map(&:id)).paginate(:page =>params[:page], :per_page => 5)
+        @users = User.where(id: users.map(&:id))
       end
     else
-      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved)).paginate(:page =>params[:page], :per_page => 5)
+      @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved))
     end
 
   end
