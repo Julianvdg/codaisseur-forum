@@ -3,8 +3,8 @@ class ProfilesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def index
-    byebug
     
+
     authorize! :read, @users
 
     if params[:search]
@@ -21,7 +21,7 @@ class ProfilesController < ApplicationController
     else
       @users = User.order("#{sort_column} #{sort_direction}").filter(params.slice(:role, :approved)).paginate(:page =>params[:page], :per_page => 5)
     end
-      
+
   end
 
   def show
