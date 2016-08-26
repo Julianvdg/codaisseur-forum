@@ -9,6 +9,14 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
         <div class="col-sm-8 col-xs-8">
           <div class="input-group pull-right">
             <%= form_tag(profiles_path, :method => "get", id: "search-form") do %>
+            <div class="filters">
+              <form class="filter_form">
+                <%= select_tag 'role', options_for_select(['student', 'teacher', 'admin'], params[:role]), include_blank: true, onchange: "this.form.submit();" %>
+              </form>
+              <form class="filter_form">
+                <%= select_tag 'approved', options_for_select([true, false], params[:approved]), include_blank: true, onchange: "this.form.submit();" %>
+              </form>
+            </div>
             <div class="input-group">
                 <%= text_field_tag :search, params[:search], placeholder: "Search profiles", class: "form-control"%>
                <span class="input-group-btn">
@@ -45,21 +53,21 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
             <% end %>
             <td><%= link_to user.profile.full_name, controller: :profiles, action: :show, id: user.profile.id %></td>
             <td><%= user.email %></td>
-            <td>  
-            
+            <td>
+
             <%= form_for :user, url: {action: "edit_role", params: {id: user.id}} do |f| %>
-            
+
             <% select_list = [ 'student', 'teacher', 'admin' ] %>
-            
+
 
             <%= select_tag :role, options_for_select([['Student', 'student'] , ['Teacher', 'teacher'] ,['Admin', 'admin']], user.role) %>
-        
-            
+
+
             <%= submit_tag("Update role") %>
 
             <% end %>
-            
-     
+
+
             </td>
             <td><%= user.role %></td>
             <% if !user.is_admin? %>
@@ -105,8 +113,8 @@ mustache gentrify migas cray, tacos pabst mumblecore deserunt.</p>
   <div class="text-center">
   <%= will_paginate @users, renderer: BootstrapPagination::Rails %>
   </div>
-  
-  
-  
-  
+
+
+
+
 </div>
