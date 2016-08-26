@@ -3,16 +3,16 @@
 <div class="user-controls controls-wrapper">
   <div class="row">
     <div class="input-group pull-right">
-      <%= link_to 'New course', new_course_path, class: 'btn btn-codaisseur' %>
+      <%= link_to 'New course', new_course_path, class: 'btn btn-codaisseur', style: 'margin-bottom: 20px;' %>
     </div>
   </div>
 </div>
 <div class="table-wrapper">
-  <table class="table table-hover">
+  <table class="table table-hover table-courses">
     <tbody>
       <% @courses.each do |course| %>
         <tr>
-          <td><%= link_to course.name, controller: :courses, action: :show, id: course.id %></td>
+          <td><%= course.name %></td>
           <td><%= course.starting_at.strftime('%B %Y') + " - " + course.ending_at.strftime('%B %Y') %></td>
           <td class="text-right">
             <%= link_to "", { action: :destroy, id: course.id }, method: :delete, data: { confirm: 'Are you sure?' }, class: "glyphicon glyphicon-trash" %>
