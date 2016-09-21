@@ -1,6 +1,11 @@
-# Codaisseur Forum 
+# Codaisseur Forum
 
 The project consists on a forum application that will be used by current students and alumni from Codaisseur. It will provide the community a better tool for getting questions answered, and making it easier to connect with other people going through the same journey.
+
+### Screenshots
+[<img src="screenshot_01.png" alt="Questions index page"/>](./screenshot_01.png)
+
+[<img src="screenshot_02.png" alt="Questions show page" width="48%"/>](./screenshot_02.png) [<img src="screenshot_03.png" alt="Profiles show page" width="48%"/>](./screenshot_03.png)
 
 ### Models
 ---
@@ -37,4 +42,3 @@ The project consists on a forum application that will be used by current student
 
 #### Votes
 - [TODO]
-

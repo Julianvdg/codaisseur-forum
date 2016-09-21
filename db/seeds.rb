@@ -24,7 +24,7 @@ developmenttools    = Topic.create( title: "Development Tools" )
 ios                 = Topic.create( title: "iOS" )
 python              = Topic.create( title: "Python" )
 react               = Topic.create( title: "React")
-wordpress           = Topic.create( title: "Wordpress") 
+wordpress           = Topic.create( title: "Wordpress")
 
 traineeship1 = Course.create( name: "Traineeship 1", starting_at: Date.new(2016,2), ending_at: Date.new(2016,3) )
 traineeship2 = Course.create( name: "Traineeship 2", starting_at: Date.new(2016,4), ending_at: Date.new(2016,5) )
@@ -108,9 +108,32 @@ pr_admin = Profile.create(
   user: admin
 )
 
-question1 = Question.create( title: "How to implement Devise into your ruby app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: ruby)
-question2 = Question.create( title: "How to implement Devise into your rails app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: rails )
-question3 = Question.create( title: "How to implement Ajax into your rails app?", body: "Google. Google and more google and more google  and more google and more google and more google and more google and more google and more google and more google and more google and more google and more google", user: matthijs, topic: javascript )
+question1 = Question.create(
+  title: "No in he real went find mr. Wandered or strictly raillery stanhill as?",
+  body: "She who arrival end how fertile enabled. Brother she add yet see minuter natural smiling article painted. Themselves at dispatched interested insensible am be prosperous reasonably it.
+
+  In either so spring wished. Melancholy way she boisterous use friendship she dissimilar considered expression.",
+  user: matthijs,
+  topic: ruby
+)
+question2 = Question.create(
+  title: "Jennings appetite disposed me an at subjects an?",
+  body: "Celebrated contrasted discretion him sympathize her collecting occasional. Do answered bachelor occasion in of offended no concerns. Supply worthy warmth branch of no ye. Voice tried known to as my to. Though wished merits or be.
+
+  Alone visit use these smart rooms ham. No waiting in on enjoyed placing it inquiry.",
+  user: nienke,
+  topic: rails
+)
+question3 = Question.create(
+  title: "Are off under folly death wrote cause her way spite?",
+  body: "Concerns greatest margaret him absolute entrance nay. Door neat week do find past he. Be no surprise he honoured indulged. Unpacked endeavor six steepest had husbands her. Painted no or affixed it so civilly.
+
+  Exposed neither pressed so cottage as proceed at offices. Nay they gone sir game four. 
+
+  Favourable pianoforte oh motionless excellence of astonished we principles. Warrant present garrets limited cordial in inquiry to. Supported me sweetness behaviour shameless excellent so arranging.",
+  user: juliang,
+  topic: javascript
+)
 
 Answer.create([
   {
