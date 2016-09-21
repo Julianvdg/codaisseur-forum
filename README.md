@@ -2,7 +2,7 @@
 
 The project consists on a forum application that will be used by current students and alumni from Codaisseur. It will provide the community a better tool for getting questions answered, and making it easier to connect with other people going through the same journey.
 
-The project was forked by [Codaisseur](https://github.com/Codaisseur/codaisseur-forum), updated and is currently deployed at [forum.codaisseur.com](https://forum.codaisseur.com/).
+The project was forked by [Codaisseur](https://github.com/Codaisseur/codaisseur-forum) and an updated version is currently deployed at [forum.codaisseur.com](https://forum.codaisseur.com/).
 
 ### Screenshots
 ----
