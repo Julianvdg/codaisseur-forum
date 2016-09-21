@@ -8,7 +8,7 @@ The project was forked by [Codaisseur](https://github.com/Codaisseur/codaisseur-
 ----
 [<img src="screenshot_01.png" alt="Questions index page"/>](./screenshot_01.png)
 
-[<img src="screenshot_02.png" alt="Questions show page" width="48%"/>](./screenshot_02.png) [<img src="screenshot_03.png" alt="Profiles show page" width="48%"/>](./screenshot_03.png)
+[<img src="screenshot_02a.png" alt="Questions show page" width="48%"/>](./screenshot_02a.png) [<img src="screenshot_03.png" alt="Profiles show page" width="48%"/>](./screenshot_03.png)
 
 ### Models
 ---
